@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardGroup } from 'react-bootstrap';
 import Products from './../Products/Products';
+import BannerSlide from './BannerSlide';
+import './Home.css';
 
 const Home = () => {
     const [fruits, setFruits] = useState([]);
@@ -21,7 +22,12 @@ const Home = () => {
 
     // console.log(fruits);
     return (
-        <div className=' container'>
+<>
+<div>
+    <BannerSlide fruits={fruits}></BannerSlide>
+</div>
+
+<div className=' container'>
             Home page {fruits.length}
             <div className=' row'>
                 <h4 className=' text-center col-md-7 mx-auto fw-light'> Find the perfect and fresh fruit from our stack of fruits. Huge collection, amazing, best quality. </h4>
@@ -29,8 +35,8 @@ const Home = () => {
                     {
                         fruits.map(fruit => (
                             <Products
-                            key={fruit._id}
-                            fruit={fruit}
+                                key={fruit._id}
+                                fruit={fruit}
                             >
 
                             </Products>
@@ -39,6 +45,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
+</>
     );
 };
 

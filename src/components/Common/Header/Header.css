@@ -1,8 +1,17 @@
-.myBrandBgColor>a#collasible-nav-dropdown {
-    color: #fff;
-    padding: 10px;
+.myBrandBgColor > a#collasible-nav-dropdown {
+  color: #fff;
+  padding: 10px;
 }
-.myBrandBgColor>.dropdown-menu[data-bs-popper] {
-    right: 0;  
-    left: auto;
+.myBrandBgColor > .dropdown-menu[data-bs-popper] {
+  right: 0;
+  left: auto;
+}
+.my_img_slider.active.carousel-item::before {
+  position: absolute;
+  background-color: rgba(53, 154, 87, 0.633);
+  content: "";
+  top: 0px;
+  left: 0px;
+  right:0px;
+  bottom: 0px; 
 }

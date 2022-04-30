@@ -1,12 +1,9 @@
-.myBrandColor{
+.myBrandColor {
   color: #198754;
-  /* color: #FD4475; */
 }
-.myBrandBgColor{
+.myBrandBgColor {
   background-color: #198754;
-  /* background-color: #FD4475; */
 }
-.myBrandBorderColor{
-border-color: #198754;
-/* border-color: #FD4475; */
+.myBrandBorderColor {
+  border-color: #198754;
 }
