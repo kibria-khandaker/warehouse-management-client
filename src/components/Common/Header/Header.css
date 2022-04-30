@@ -1,0 +1,8 @@
+.myBrandBgColor>a#collasible-nav-dropdown {
+    color: #fff;
+    padding: 10px;
+}
+.myBrandBgColor>.dropdown-menu[data-bs-popper] {
+    right: 0;  
+    left: auto;
+}
