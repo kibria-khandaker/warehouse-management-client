@@ -4,5 +4,12 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-blend-mode: soft-light;
+  /* background-blend-mode: soft-light; */
+  background-blend-mode:color-burn;
+}
+.HomeSlider>.carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  background-color: #81ffc6;
+
 }

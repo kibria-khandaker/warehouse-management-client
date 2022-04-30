@@ -6,7 +6,7 @@ import './Header.css';
 
 const Header = () => {
     return (
-        <header className='header'>
+        <header className='my_header'>
             <Navbar collapseOnSelect expand="lg" className=' bg-transparent'>
                 <Container>
                     <Navbar.Brand as={Link} to="/">

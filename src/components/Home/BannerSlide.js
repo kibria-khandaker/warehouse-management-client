@@ -5,10 +5,11 @@ import './Home.css';
 const BannerSlide = ({ fruits }) => {
     // console.log(fruits);
     return (
-        <Carousel>
+        <Carousel className='HomeSlider'>
             {
                 fruits.map(fruit => (
                     <Carousel.Item
+                    interval={2000}
                         key={fruit._id}
                         style={{ backgroundImage: `url(${fruit.img})` }}
                         className='sliderBgImg myBrandBgColor' >
@@ -17,7 +18,7 @@ const BannerSlide = ({ fruits }) => {
                             <p>{fruit.shortDesc}</p>
                         </Carousel.Caption>
                     </Carousel.Item>
-                ))
+                )).slice(0,6)
             }
         </Carousel>
     );
