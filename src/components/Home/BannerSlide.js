@@ -12,13 +12,13 @@ const BannerSlide = ({ fruits }) => {
                     interval={2000}
                         key={fruit._id}
                         style={{ backgroundImage: `url(${fruit.img})` }}
-                        className='sliderBgImg myBrandBgColor' >
+                        className='sliderBgImg' >
                         <Carousel.Caption>
                             <h3 className=' text-uppercase'> {fruit.name} </h3>
                             <p>{fruit.shortDesc}</p>
                         </Carousel.Caption>
                     </Carousel.Item>
-                )).slice(0,6)
+                )).slice(0,5)
             }
         </Carousel>
     );

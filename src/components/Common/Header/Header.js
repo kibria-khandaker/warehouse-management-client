@@ -16,12 +16,12 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-md-end'>
                         <Nav className='nav_a fw-bold'>
 
-                            <Nav.Link as={Link} to="/" className={({ isActive }) => (isActive ? "myBrandColor" : "text-dark")}> Home </Nav.Link>
-                            <Nav.Link as={Link} to="/about" className={({ isActive }) => (isActive ? "myBrandColor" : "text-dark")}>About </Nav.Link>
-                            <Nav.Link as={Link} to="/blogs" className={({ isActive }) => (isActive ? "myBrandColor" : "text-dark")}> Blog </Nav.Link>
+                            <Nav.Link as={Link} to="/" className='  text-success' > Home </Nav.Link>
+                            <Nav.Link as={Link} to="/about" className=' text-success' >About </Nav.Link>
+                            <Nav.Link as={Link} to="/blogs" className=' text-success' > Blog </Nav.Link>
                             
-                            <NavDropdown title="Admin" id="collasible-nav-dropdown"  className='myBrandBgColor text-white rounded-3'  >
-                                <NavDropdown.Item  as={Link} to="/blogs" className={({ isActive }) => (isActive ? "myBrandColor" : "text-dark")}> Blog </NavDropdown.Item>
+                            <NavDropdown title="Admin" id="collasible-nav-dropdown"  className='myBrandBgColor  text-success rounded-3'  >
+                                <NavDropdown.Item  as={Link} to="/blogs" className={({ isActive }) => (isActive ? "myBrandColor" : "myBrandColor")}> Blog </NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                                 <NavDropdown.Divider />

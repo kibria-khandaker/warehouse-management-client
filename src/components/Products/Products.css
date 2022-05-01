@@ -1,27 +1,21 @@
-
 .overlay_body {
   background-color: #1987540f;
-  border: 1px solid transparent;
+  border: 1px solid white;
 }
 .overlay_body:hover{
     border: 1px solid #1987543d;
 }
 .cart_stock_header {
-  letter-spacing: 4px;
+  border: 0px solid white;
+  letter-spacing: 4px; 
   transition: all 0.3s;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  background-color: #198754;
-  color: rgb(255, 255, 255);
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
 }
 .overlay_body:hover .cart_stock_header {
   letter-spacing: 10px;
-  background-color: #19875492;
+  background-color: #20e5891b;
 }
-
-
 .update_btn:hover{
 background-color: #3ba775;
 }

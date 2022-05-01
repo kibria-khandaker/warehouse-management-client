@@ -7,7 +7,8 @@ import Footer from './components/Common/Footer/Footer';
 import Header from './components/Common/Header/Header';
 import Login from './components/Common/UserAuth/Login';
 import Home from './components/Home/Home';
-import ManegeStock from './components/ManegeStock/ManegeStock';
+import ManageInventories from './components/ManageInventories/ManageInventories';
+import UpdateStockItem from './components/ManegeStock/UpdateStockItem';
 import Products from './components/Products/Products';
 
 function App() {
@@ -20,8 +21,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/ManegeStock" element={<ManegeStock />} />
+        <Route path="/UpdateStockItem" element={<UpdateStockItem />} />
         <Route path="/Products" element={<Products />} />
+        <Route path="/inventory/:id" element={<UpdateStockItem />} />
+        <Route path="/ManageInventories" element={<ManageInventories />} />
       </Routes>
       <Footer></Footer>
     </div>

@@ -3,13 +3,39 @@
   padding-bottom: 300px;
   background-position: center;
   background-size: cover;
+  background-color: #002e20;
+  /* background-color: #19875499; */
   background-repeat: no-repeat;
-  /* background-blend-mode: soft-light; */
-  background-blend-mode:color-burn;
+  background-blend-mode: luminosity;
 }
-.HomeSlider>.carousel-indicators [data-bs-target] {
+.HomeSlider > .carousel-indicators [data-bs-target] {
   width: 10px;
   height: 10px;
   background-color: #81ffc6;
+}
 
+.promotion_section {
+  background-image: linear-gradient(to right, #198754bb, #ffffff);
+  color: #000000;
+  padding: 150px 10px;
+  margin-top: 75px;
+}
+.blog_mg {
+  border-top-left-radius: 13.25rem !important;
+  border-bottom-left-radius: 7.25rem !important;
+  border-top-right-radius: 19.25rem !important;
+  border-bottom-right-radius: 0rem !important;
+}
+
+.home_footer_banner{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #ffffff80;
+  background-image: url(../../images/offer_img/bg-5.jpg);
+  background-attachment: fixed;
+  color: #ffffff;
+  margin-top: 150px;
+  padding: 50px 10px;
+  background-blend-mode: color;
 }

@@ -8,9 +8,9 @@ const useStockproduct = () => {
         // const url = `https://nameless-bastion-84935.herokuapp.com/product`;
 
         // http://localhost:5000/product server link = working
-        // const url = `http://localhost:5000/product`;
+        const url = `http://localhost:5000/product`;
 
-        const url = `/fruitsData.json`;
+        // const url = `/fruitsData.json`;
 
         fetch(url)
             .then(res => res.json())
