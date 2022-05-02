@@ -19,14 +19,14 @@ const SingleProductComponent  = ({ fruit }) => {
                 </div>
                 <img src={img} className="card-img-top rounded-top" alt="..." />
                 <div className="card-body">
-                    <div className=' d-flex justify-content-around'>
+                    <div className=' d-flex justify-content-between'>
                         <h5 className="card-text m-0  fw-light"> Price : $<b>{price}</b><sub>/kg</sub></h5>
-                        <h5 className="card-text m-0  fw-light"> Supplier <b className=' text-uppercase'> : {supplier}</b> </h5>
+                        <h6 className="card-text m-0  fw-light"> Supplier <b className=' text-uppercase'> : {supplier}</b> </h6>
                     </div>
                     <p className="card-text pt-4">{shortDesc}</p>
                     <hr className='myBrandColor' />
                     <div className=' d-flex justify-content-between'>
-                        <h5 className="card-text text-center fw-light"> In stock <b className=' text-uppercase'> : {inStock}</b> </h5>
+                        <h6 className="card-text text-center fw-light"> In stock: <b className=' text-uppercase'>  {inStock}</b> </h6>
                         <Button size='sm' onClick={() => productDetails(_id)} className='btn myBrandBgColor border-0 btn-outline-success text-white'> Updated {name} Stock </Button>
                     </div>
                 </div>

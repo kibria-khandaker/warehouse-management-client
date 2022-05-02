@@ -23,7 +23,7 @@ const Home = () => {
                         Find the perfect and fresh fruit from our stack of fruits. Huge collection, amazing, best quality.
                         <div className='myBrandBgColor w-25 mx-auto mt-3 p-1 opacity-25 pb-0'></div>
                     </h4>
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-0 g-5 mx-auto">
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-0 g-4 mx-auto">
                         {
                             fruits.map(fruit => (
                                 <SingleProductComponent
