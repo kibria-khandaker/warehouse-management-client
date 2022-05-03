@@ -9,6 +9,7 @@ import Login from './components/Common/UserAuth/Login';
 import Home from './components/Home/Home';
 import ManageInventories from './components/ManageInventories/ManageInventories';
 import UpdateStockItem from './components/ManegeStock/UpdateStockItem';
+import NotFound from './components/NotFound/NotFound';
 import Products from './components/Products/Products';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/Products" element={<Products />} />
         <Route path="/inventory/:id" element={<UpdateStockItem />} />
         <Route path="/ManageInventories" element={<ManageInventories />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer></Footer>
     </div>
