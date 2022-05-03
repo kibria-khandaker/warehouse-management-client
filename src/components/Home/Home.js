@@ -30,9 +30,8 @@ const Home = () => {
                                     key={fruit._id}
                                     fruit={fruit}
                                 >
-
                                 </SingleProductComponent>
-                            )).slice(0, 6)
+                            ))
                         }
                     </div>
                     <div className='row'>

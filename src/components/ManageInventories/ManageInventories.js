@@ -7,7 +7,7 @@ const ManageInventories = () => {
     const [fruits, setFruits] = useStockproduct();
 
     // react-hook-form ----------
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit} = useForm();
     const onSubmit = data => {
         console.log(data)
         const url = `http://localhost:5000/product/`
@@ -20,6 +20,7 @@ const ManageInventories = () => {
         })
             .then(response => response.json())
             .then(addResult => {
+                
                 console.log('Successfully Added:', addResult);
                 // const remainRefresh = fruits.filter(fruit => fruit._id !== data)
                 // setFruits(...fruits, remainRefresh)
@@ -47,19 +48,25 @@ const ManageInventories = () => {
                         {/* name , category , supplier , price , inStock , quality , img , shortDesc , */}
                         <form onSubmit={handleSubmit(onSubmit)} className='d-flex flex-column gap-2'>
                             <span className=' d-flex justify-content-between gap-3'>
-                                <input className='w-75' placeholder='Name' {...register("name")} />
-                                <input className='w-25' placeholder='Price' type="number" {...register("price")} />
+                                <input className='w-75' placeholder='Product Name' {...register("name")} />
+                                <input className='w-25' placeholder='Product Price' type="number" {...register("price")} />
                             </span>
                             <span className=' d-flex justify-content-between gap-3'>
-                                <input className='w-75' placeholder='Category' {...register("category")} />
-                                <input className='w-25' placeholder='inStock' type="number" {...register("inStock")} />
+                                <input className='w-75' placeholder='Product Category' {...register("category")} />
+                                <input className='w-25' placeholder='inStock Unit /kg' type="number" {...register("inStock")} />
                             </span>
                             <span className=' d-flex justify-content-between gap-3'>
-                                <input className='w-75' placeholder='Supplier' {...register("supplier")} />
-                                <input className='w-25' placeholder='Quality' {...register("quality")} />
+                                <input className='w-75' placeholder='Supplier Name' {...register("supplier")} />
+                                <select className='w-25' {...register("quality")}>
+                                    <option value="--" selected disabled hidden> Product Quality </option>
+                                    <option value="Normal"> Normal </option>
+                                    <option value="Good"> Good </option>
+                                    <option value="Best"> Best </option>
+                                    <option value="Bad"> Bad </option>
+                                </select>
                             </span>
-                            <input placeholder='image Url' {...register("img")} />
-                            <textarea placeholder='shortDesc' {...register("shortDesc")} />
+                            <input placeholder='Product image Url' {...register("img")} />
+                            <textarea placeholder='Product Description' {...register("shortDesc")} />
                             <input className='bg-success col col-mg-5 col-lg-4 border-0 text-white rounded-3 py-2 mt-2 ' type="submit" value='Add' />
                         </form>
                     </div>
@@ -105,7 +112,7 @@ const ManageInventories = () => {
                 />
             </div>
             <div>
-                <p>Total Stored Items are: <b>{fruits.length}</b> </p>
+                <p>Total Stocked items : <b>{fruits.length}</b> </p>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -128,7 +135,7 @@ const ManageInventories = () => {
                                     <td>{fruit.supplier}</td>
                                     <td> {fruit.quality} </td>
                                     <td> {fruit.inStock} <sup>kg</sup> </td>
-                                    <td> <Button  onClick={() => handelForDeleteItems(fruit._id)} size="sm" className=' text-white bg-success border-0 btn-outline-success ' >Delete</Button> </td>
+                                    <td> <Button onClick={() => handelForDeleteItems(fruit._id)} size="sm" className=' text-white bg-success border-0 btn-outline-success ' >Delete</Button> </td>
                                 </tr>
                             )).reverse()
                         }
