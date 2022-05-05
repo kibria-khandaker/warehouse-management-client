@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <div className='container-fluid bg-dark text-white'>
             <div className="row">
-                <div className="col-10 mx-auto d-flex flex-md-row flex-column justify-content-around py-5 align-items-center">
+                <div className="col-10 mx-auto d-flex flex-md-row flex-column justify-content-around py-4 align-items-center">
                     <p className='text-white fw-lighter m-0'> <small>Copyright @ {year} </small> Fruits Stock House </p>
                     <div className='fs-4'>
                         <a className=' text-white' href="https://www.facebook.com/amikibria"><SiFacebook></SiFacebook></a> &nbsp; &nbsp;

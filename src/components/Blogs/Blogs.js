@@ -2,10 +2,10 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import useStockproduct from '../../hooks/useStockproduct';
 import horizontallyImg from '../../images/horizontallyImg.png';
+import jwtImg from '../../images/jwtImg.jpg';
 import MongoDBImg from '../../images/MongoDBImg.jpg';
 import nodejsImg from '../../images/nodejsImg.jpg';
 import verticallyImg from '../../images/verticallyImg.png';
-import jwtImg from '../../images/jwtImg.jpg';
 
 const Blogs = () => {
     const [fruits, setFruits] = useStockproduct();
@@ -189,9 +189,10 @@ const Blogs = () => {
                     <img className='w-100 d-flex justify-content-center' src={jwtImg} alt="" />
                     <p>
                         <b>JWT, or JSON Web Token</b>,
-                        JWT is make a security system user vs applications/web,
-                        it's confirm of real user by digitally signature and So the confection and verified and trusted.
-                        It is also a popular way to authenticate/authorize users in a microservice architecture.
+                        JWT is also a popular way to authenticate/authorize users in a microservice architecture.
+
+                        JWT is make a security our API links and  make a security our user vs applications/web system,
+                        JWT collection User information and send it to server with JWT encrypt code And try to match it with User Verification token and information , if matched then allow access. And it's confirm of real user by digitally signature and So the confection and verified and trusted.
 
                         JWT authentication is a token- based stateless authentication system.
                         It's popularly applied as a client- side- based stateless session,

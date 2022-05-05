@@ -1,0 +1,17 @@
+.divider_div{
+    position: relative;
+}
+.divider_line{
+
+}
+.divider_or{
+position: absolute;
+top: -18px;
+left: 15%;
+padding:4px 7px;
+border: 1px solid #1a8754;
+background-color:#ffffff;
+color: #1a8754;
+border-radius: 50%;
+
+}
