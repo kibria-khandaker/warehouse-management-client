@@ -1,105 +1,59 @@
 import { signOut } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
 import { auth } from '../../../firebase.init';
 import SignUpImg from '../../../images/signUpImg.jpg';
+import LoadingSpinner from './LoadingSpinner';
 import './UserAuth.css';
+import SocialLogin from './SocialLogin';
 
 const SignUp = () => {
     const [userAuth] = useAuthState(auth);
-    const [userInfo, setUserInfo] = useState({
-        email: "",
-        password: "",
-        confirmPass: "",
-    });
-    const [errors, setErrors] = useState({
-        email: "",
-        password: "",
-        general: "",
-    });
+    let errorElement;
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
-        userError
+        error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    // const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
-    const handleEmailChange = (event) => {
-        const emailRegex = /\S+@\S+\.\S+/;
-        const validEmail = emailRegex.test(event.target.value);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-        if (validEmail) {
-            setUserInfo({ ...userInfo, email: event.target.value });
-            setErrors({ ...errors, email: "" });
-        } else {
-            setErrors({ ...errors, email: "Invalid email" });
-            setUserInfo({ ...userInfo, email: "" });
-        }
-    };
-
-
-    const handlePasswordChange = (event) => {
-        const passwordRegex = /.{6,}/;
-        const validPassword = passwordRegex.test(event.target.value);
-
-        if (validPassword) {
-            setUserInfo({ ...userInfo, password: event.target.value });
-            setErrors({ ...errors, password: "" });
-        } else {
-            setErrors({ ...errors, password: "Minimum 6 characters!" });
-            setUserInfo({ ...userInfo, password: "" });
-        }
-    };
-
-    const handleConfirmPasswordChange = (event) => {
-        if (event.target.value === userInfo.password) {
-            setUserInfo({ ...userInfo, confirmPass: event.target.value });
-            setErrors({ ...errors, password: "" });
-        } else {
-            setErrors({ ...errors, password: "Password's don't match" });
-            setUserInfo({ ...userInfo, confirmPass: "" });
-        }
-    };
-
-    const handleSignUp = (event) => {
-        event.preventDefault();
-        // const name = event.target.name.value;
-        console.log(userInfo);
-        createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-        // updateProfile({ displayName: userName.name });
-        // console.log('Updated profile',  userName);
-    };
-
-    useEffect(() => {
-        if (userError || googleError) {
-            switch (userError?.code) {
-                case "auth/invalid-email":
-                    toast("Invalid email provided, please provide a valid email");
-                    break;
-                case "auth/invalid-password":
-                    toast("Wrong password. Intruder!!");
-                    break;
-                default:
-                    toast("Something went wrong");
-            }
-        }
-    }, [userError, googleError]);
-
+    // old user redirect to login
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
 
-    useEffect(() => {
+    if (loading || updating) {
+        return <LoadingSpinner></LoadingSpinner>
+    }
+
+    if (error) {
+        errorElement = <p className=' text-danger'>Error: {error?.message} </p>
+    }
+
+    const handleRegister = async (event) => {
+
+        event.preventDefault();
+
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+
         if (user) {
-            navigate(from);
+            console.log(user);
+            return (alert('your email already used') + navigate('/login'))
+        } else {
+
+            navigate('/home');
+            console.log(user);
         }
-    }, [user]);
+
+    }
 
     return (
         <div className=' container'>
@@ -110,7 +64,6 @@ const SignUp = () => {
                 <div className="col-md-7 mx-auto text-center">
 
                     {
-                        // user?<small className='fw-lighter px-1'>{user?.displayName}</small>:''
                         userAuth ? <div className='py-5'>
                             <h5 className=' px-1 fw-light '> You Ara already SignUp With  : <b> {userAuth?.email}</b> </h5>
                             <p>
@@ -121,43 +74,33 @@ const SignUp = () => {
                             </p>
                         </div>
                             : <>
-
-
-                                <Form className="d-flex flex-column justify-content-center" onSubmit={handleSignUp}>
+                                {errorElement}
+                                <Form onSubmit={handleRegister}>
 
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Control name="name" className='w-100  border bg-light text-dark rounded-3 p-2' type="text" placeholder="Your Name" required />
+                                        <Form.Control type="text" name="name" placeholder="Enter Name" />
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Control name="email" className='w-100  border bg-light text-dark rounded-3 p-2 ' type="email" placeholder="Your Email" onChange={handleEmailChange} required />
-                                        {errors?.email && <p className="error-message">{errors.email}</p>}
+                                        <Form.Control type="email" name="email" placeholder="Enter Email" required />
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                                        <Form.Control name="password" className='w-100  border bg-light text-dark rounded-3 p-2 ' type="password" placeholder="password" onChange={handlePasswordChange} required />
-                                        {errors?.password && <p className="error-message">{errors.password}</p>}
+                                        <Form.Control type="password" name="password" placeholder="Password" required />
                                     </Form.Group>
 
-                                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                                        <Form.Control name="confirmPassword" className='w-100 border bg-light text-dark rounded-3 p-2'
-                                            type="password"
-                                            placeholder="confirm password"
-                                            onChange={handleConfirmPasswordChange}
-                                            required />
-                                    </Form.Group>
-
-
-
-                                    <Button className='border bg-success text-white rounded-3 p-2 mb-4' type="submit">
+                                    <Button  className=' border w-100 bg-success text-white rounded-3 p-2 mb-4 ' type="submit">
                                         Sign Up
                                     </Button>
-                                    <p>Already have an account? <Link to="/login"> Go to Login </Link> </p>
+
                                 </Form>
-                                <div className=' my-4 mx-auto divider_div p-4 border' >
-                                    <span className=' divider_or'>Or</span>
-                                    <button className='w-100 border-0 rounded-3bg-light text-success mb-2 p-2' onClick={() => signInWithGoogle()}>  Sign Up with Google Account </button>
-                                </div>
+
+                                <p>Already have an account? <Link className=' bg-light  p-2 border rounded text-success text-decoration-none' to="/login"> Go to Login </Link> </p>
+                                
+                                
+                                <SocialLogin></SocialLogin>
+
+
 
                             </>
                     }

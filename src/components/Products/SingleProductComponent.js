@@ -3,9 +3,9 @@ import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import './Products.css';
 
-const SingleProductComponent  = ({ fruit }) => {
-    const { _id,img, name, price, quality, inStock, supplier, shortDesc } = fruit;
-    
+const SingleProductComponent = ({ fruit }) => {
+    const { _id, img, name, price, quality, inStock, supplier, shortDesc } = fruit;
+
     const navigate = useNavigate()
     const productDetails = _id => {
         navigate(`/inventory/${_id}`)
@@ -23,7 +23,13 @@ const SingleProductComponent  = ({ fruit }) => {
                         <h5 className="card-text m-0  fw-light"> Price : $<b>{price}</b><sub>/kg</sub></h5>
                         <h6 className="card-text m-0  fw-light"> Supplier <b className=' text-uppercase'> : {supplier}</b> </h6>
                     </div>
-                    <p className="card-text pt-4">{shortDesc}</p>
+                    <p className="card-text pt-4">
+
+                        {shortDesc.length < 150 ? shortDesc.length : shortDesc.slice(0, 150)}
+                        <Button  size='sm' className='read-more bg-transparent border-0 text-success' onClick={() => productDetails(_id)} >
+                            ... Read More
+                        </Button>
+                    </p>
                     <hr className='myBrandColor' />
                     <div className=' d-flex justify-content-between'>
                         <h6 className="card-text text-center fw-light"> In stock: <b className=' text-uppercase'>  {inStock}</b> </h6>

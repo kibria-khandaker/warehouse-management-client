@@ -15,6 +15,7 @@ const UpdateStockItem = () => {
         console.log(data)
 
         const url = `http://localhost:5000/inventory/${id}`
+        // const url = `https://nameless-bastion-84935.herokuapp.com/inventory/${id}`
         fetch(url, {
             method: 'PUT',
             body: JSON.stringify(data),
@@ -91,9 +92,6 @@ const UpdateStockItem = () => {
                                     <p> Stock Type : <spam className=' text-success'> {category} </spam> </p>
                                 </div>
                             </div>
-
-
-
                             <p className='my-5 pt-3'> <b> Description : </b> {shortDesc}</p>
                         </div>
                     </div>

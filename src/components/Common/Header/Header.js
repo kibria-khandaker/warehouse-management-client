@@ -1,12 +1,11 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import { auth } from '../../../firebase.init';
 import logo from '../../../images/logo.png';
 import './Header.css';
-import { signOut } from 'firebase/auth';
-
 
 const Header = () => {
     const [user] = useAuthState(auth);
@@ -22,33 +21,30 @@ const Header = () => {
                         <Nav className='nav_a fw-bold'>
 
                             <Nav.Link as={Link} to="/" className='  text-success' > Home </Nav.Link>
-                            <Nav.Link as={Link} to="/about" className=' text-success' >About </Nav.Link>
                             <Nav.Link as={Link} to="/blogs" className=' text-success' > Blog </Nav.Link>
+                            <Nav.Link as={Link} to="/signup" className=' text-success' > SignUp </Nav.Link>
 
-                            <NavDropdown title="Admin" id="collasible-nav-dropdown" className='myBrandBgColor  text-success rounded-3'  >
-                                <NavDropdown.Item as={Link} to="/blogs" className={({ isActive }) => (isActive ? "myBrandColor" : "myBrandColor")}> Blog </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/signup"> SignUp </NavDropdown.Item>
-
-                                <NavDropdown.Divider />
-                                {
-                                    // user?<small className='fw-lighter px-1'>{user?.displayName}</small>:''
-                                    user?<small className='fw-lighter px-1'>{user?.email}</small>:''
-                                }
-                                
-                                {user ? (
-                                    <Button className=' bg-light border-0 fw-bold text-start w-100 rounded-0 text-success' onClick={() => signOut(auth)}>
-                                        Logout
-                                    </Button>
+                            {
+                                user ? (<>
+                                    <Nav.Link onClick={() => signOut(auth)} as={Link} to="/login" className=' text-success' >LogOut</Nav.Link>
+                                    <NavDropdown title="Admin" id="collasible-nav-dropdown" className=' myBrandBgColor text-success rounded-3 '  >
+                                        {
+                                            user ?
+                                                <>
+                                                    <small className='fw-lighter px-1'>{user?.email}</small>
+                                                    <NavDropdown.Divider />
+                                                </>
+                                                : ''
+                                        }
+                                        {/* <NavDropdown.Item as={Link} to="/blogs" className={({ isActive }) => (isActive ? "myBrandColor" : "myBrandColor")}> Blog </NavDropdown.Item> */}
+                                        <NavDropdown.Item as={Link} to="/ManageInventories"  > Manage Items </NavDropdown.Item>
+                                        <NavDropdown.Item as={Link} to="/addNewItem"  > Add Item </NavDropdown.Item>
+                                    </NavDropdown>
+                                </>
                                 ) : (
-                                    <NavDropdown.Item
-                                        className=' bg-light border-0 fw-bold text-start w-100 rounded-0 text-success'
-                                        as={Link} to="/login">Login </NavDropdown.Item>
-                                )}
-                                
-                            </NavDropdown>
-
+                                    <Nav.Link as={Link} to="/login" className=' text-success' >Login</Nav.Link>
+                                )
+                            }
 
                         </Nav>
                     </Navbar.Collapse>
