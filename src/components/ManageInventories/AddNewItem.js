@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 
 const AddNewItem = () => {
     // react-hook-form ----------
@@ -51,6 +52,7 @@ const AddNewItem = () => {
                         <textarea placeholder='Product Description' {...register("shortDesc")} />
                         <input className='bg-success col col-mg-5 col-lg-4 border-0 text-white rounded-3 py-2 mt-2 ' type="submit" value='Add' />
                     </form>
+                    <Link className=' d-inline-block myBrandBgColor my-5 px-3 py-2 rounded-3 text-white text-decoration-none' to={'/ManageInventories'}> Manage Inventories </Link>
                 </div>
             </div>
         </div>

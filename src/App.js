@@ -3,11 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
 import Blogs from './components/Blogs/Blogs';
+import InventoryItemeBlog from './components/Blogs/InventoryItemeBlog';
 import Footer from './components/Common/Footer/Footer';
 import Header from './components/Common/Header/Header';
 import Login from './components/Common/UserAuth/Login';
 import RequireAuth from './components/Common/UserAuth/RequireAuth';
 import SignUp from './components/Common/UserAuth/SignUp';
+import Chart from './components/Home/Chart';
 import Home from './components/Home/Home';
 import AddNewItem from './components/ManageInventories/AddNewItem';
 import ManageInventories from './components/ManageInventories/ManageInventories';
@@ -24,8 +26,16 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/addNewItem" element={<AddNewItem />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/Chart" element={<Chart />} />
+        
+        <Route path="/itemDetails/:id" element={<InventoryItemeBlog />} />
+
+        <Route path="/addNewItem" element={
+          <RequireAuth>
+            <AddNewItem />
+          </RequireAuth>
+        } />
         <Route path="/UpdateStockItem" element={
           <RequireAuth>
             <UpdateStockItem />
@@ -42,6 +52,8 @@ function App() {
             <ManageInventories />
           </RequireAuth>
         } />
+
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />

@@ -25,9 +25,9 @@ const SingleProductComponent = ({ fruit }) => {
                     </div>
                     <p className="card-text pt-4">
 
-                        {shortDesc.length < 150 ? shortDesc.length : shortDesc.slice(0, 150)}
-                        <Button  size='sm' className='read-more bg-transparent border-0 text-success' onClick={() => productDetails(_id)} >
-                            ... Read More
+                        {shortDesc.length < 95? shortDesc.length : shortDesc.slice(0, 95)}
+                        <Button  size='sm' className='read-more bg-transparent border-0 text-success' onClick={() => navigate(`/itemDetails/${fruit._id}`)} >
+                            ... Read Details
                         </Button>
                     </p>
                     <hr className='myBrandColor' />

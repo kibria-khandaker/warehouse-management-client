@@ -65,7 +65,7 @@ const SignUp = () => {
 
                     {
                         userAuth ? <div className='py-5'>
-                            <h5 className=' px-1 fw-light '> You Ara already SignUp With  : <b> {userAuth?.email}</b> </h5>
+                            <h5 className=' px-1 fw-light '> You Are Signed With  : <b> {userAuth?.email}</b> </h5>
                             <p>
                                 if you want to sign up with new Account, Place :
                                 <Button className=' bg-light border-0 fw-bold text-start rounded-0 text-success' onClick={() => signOut(auth)}>

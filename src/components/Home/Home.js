@@ -1,15 +1,16 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useStockproduct from '../../hooks/useStockproduct';
 import footerLogo from '../../images/logo.png';
 import SingleProductComponent from '../Products/SingleProductComponent';
 import BannerSlide from './BannerSlide';
 import './Home.css';
+import Chart from './Chart'
 
 const Home = () => {
     const [fruits, setFruits] = useStockproduct();
-
+    const navigate = useNavigate();
     return (
         <>
             {/* xxxxxxxxxxxx Slider Section xxxxxxxxxxxx */}
@@ -31,7 +32,7 @@ const Home = () => {
                                     fruit={fruit}
                                 >
                                 </SingleProductComponent>
-                            ))
+                            )).slice(0, 6)
                         }
                     </div>
                     <div className='row'>
@@ -75,9 +76,17 @@ const Home = () => {
                                     <div className="col-md-7">
                                         <div className="card-body">
                                             <h5 className="card-title">  {fruit.name}  </h5>
-                                            <p className="card-text"> {fruit.shortDesc} </p>
+                                            <p className="card-text">
+                                                {fruit.shortDesc.length < 200 ? fruit.shortDesc : fruit.shortDesc.slice(0, 200)}
+                                                <Button size='sm' className='read-more bg-transparent border-0 text-success'
+                                                 onClick={() => navigate(`/itemDetails/${fruit._id}`)} 
+                                                >
+                                                    ... Read More
+                                                </Button>
+                                            </p>
                                             <p className="card-text"><small className="text-muted"> {fruit._id} </small></p>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +98,7 @@ const Home = () => {
             {/* xxxxxxxxxxxx Footer Banner section  xxxxxxxxxxxx  */}
             <div className=' container-fluid home_footer_banner text-center'>
                 <img className='w-25' src={footerLogo} alt="" />
+                <Chart></Chart>
             </div>
 
 
