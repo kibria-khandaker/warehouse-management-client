@@ -8,7 +8,7 @@ import nodejsImg from '../../images/nodejsImg.jpg';
 import verticallyImg from '../../images/verticallyImg.png';
 
 const Blogs = () => {
-    const [fruits, setFruits] = useStockproduct();
+    // const [fruits, setFruits] = useStockproduct();
     return (
 
         <div className=' container mx-auto px-0 py-5 mt-5'>
@@ -21,10 +21,10 @@ const Blogs = () => {
                         </span>
                     </h4>
                     <h5 className='text-success fw-normal' > # Answer :</h5>
-                    <Table striped bordered hover>
+                    <Table striped bordered hover  >
                         <thead>
                             <tr className=' text-center'>
-                                <th>-</th>
+                                <th> no </th>
                                 <th> JavaScript </th>
                                 <th> Node JS </th>
                             </tr>
@@ -75,7 +75,7 @@ const Blogs = () => {
                         </span>
                     </h4>
                     <h5 className='text-success fw-normal' > # Answer : </h5>
-                    <Table striped bordered hover>
+                    <Table striped bordered hover >
                         <thead>
                             <tr className=' text-center'>
                                 <th> Node JS </th>
@@ -123,7 +123,7 @@ const Blogs = () => {
                         </span>
                     </h4>
                     <h5 className='text-success fw-normal' > # Answer : <span className='fw-normal' ></span>  </h5>
-                    <Table striped bordered hover>
+                    <Table striped bordered hover >
                         <thead>
                             <tr className=' text-center'>
                                 <th>-</th>
@@ -199,42 +199,8 @@ const Blogs = () => {
                         this means the server does not possess to fully depend on a data store (or) database to deliver session data.
                     </p>
                 </div>
-            </div>
-
-
-
-
-            {/* Blog for products  */}
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div className="row row-cols-1 row-cols-lg-2 g-4 mx-auto">
-
-                {
-                    fruits.map(fruit => (
-                        <div key={fruit._id} className=" g-0">
-                            <div className="row g-0 p-3 align-items-center">
-                                <div className="col-md-5">
-                                    <img src={fruit.img} className="img-fluid rounded-start" alt="..." />
-                                </div>
-                                <div className="col-md-7">
-                                    <div className="card-body">
-                                        <h5 className="card-title">  {fruit.name}  </h5>
-                                        <p className="card-text"> {fruit.shortDesc} </p>
-                                        <p className="card-text"><small className="text-muted"> Post Date </small></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
+            </div>  
+                 
         </div>
 
     );

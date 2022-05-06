@@ -39,3 +39,9 @@
   padding: 50px 10px;
   background-blend-mode: color;
 }
+
+@media only screen and (max-width: 500px) {
+  .chart_div{
+display: none;
+  }
+}

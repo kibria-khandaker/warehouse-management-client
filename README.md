@@ -1,12 +1,12 @@
 # Fruits Stock House
 
-#### My project Live link, And click [Here][https://fruits-stock-house.web.app/](https://fruits-stock-house.web.app/)
+#### My project Live link, And click [https://fruits-stock-house.web.app/](https://fruits-stock-house.web.app/)
 
 <br /><br />
 Hello,
 I am Kibria,
 <br />
-I have read your description and you are looking for a front-end web developer for your company, your company focuses on warehouse management (inventory management) website . here is an example of a warehouse-type website. you can check the list of my used tools
+I have read your description and you are looking for a front-end web developer for your company, your company focuses on warehouse management (inventory management) website . here is an example of a warehouse-type website. you can check from the point of list
 
 #### Here is my Details about my Project
 

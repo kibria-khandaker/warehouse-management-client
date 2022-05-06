@@ -4,22 +4,21 @@ import useStockproduct from "../../hooks/useStockproduct";
 
 const Chart = () => {
     const [fruits, setFruits] = useStockproduct();
-    console.log(fruits);
-
+    // console.log(fruits);
     return (
         <div className=" container">
         <div className="row">
-            <div className="col-md-8 mx-auto d-flex justify-content-center">
-                <PieChart width={400} height={400} >
+            <div style={{backgroundImage: 'radial-gradient(white, transparent, transparent)'}} className="col-md-10 mx-auto d-flex justify-content-center">
+                <PieChart width={350} height={350} >
                     <Pie
                         dataKey="inStock"
                         isAnimationActive={false}
                         data={fruits}
-                        cx={200}
-                        cy={200}
-                        outerRadius={150}
+                        cx={165}
+                        cy={170}
+                        outerRadius={130}
                         stroke="#ffffff" 
-                        fill="#198754"
+                        fill="green"
                         label
                     />
                     <Tooltip />

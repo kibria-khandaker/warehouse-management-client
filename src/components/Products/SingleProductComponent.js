@@ -12,7 +12,7 @@ const SingleProductComponent = ({ fruit }) => {
     }
 
     return (
-        <div className="col ">
+        <div className="col">
             <div className="card rounded-3 overlay_body">
                 <div className="card-header cart_stock_header rounded-top">
                     <h3 className="card-title text-center my-0 text-uppercase"> {name} </h3>

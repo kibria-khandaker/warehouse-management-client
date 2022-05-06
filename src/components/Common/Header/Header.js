@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import { auth } from '../../../firebase.init';
 import logo from '../../../images/logo.png';
+import CustomLink from './CustomLink';
 import './Header.css';
 
 const Header = () => {
@@ -18,15 +19,15 @@ const Header = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-md-end'>
-                        <Nav className='nav_a fw-bold'>
+                        <Nav className='nav_a text-success'>
 
-                            <Nav.Link as={Link} to="/" className='  text-success' > Home </Nav.Link>
-                            <Nav.Link as={Link} to="/blogs" className=' text-success' > Blog </Nav.Link>
-                            <Nav.Link as={Link} to="/signup" className=' text-success' > SignUp </Nav.Link>
+                            <Nav.Link as={CustomLink} to="/"  > Home </Nav.Link>
+                            <Nav.Link as={CustomLink} to="/blogs"  > Blog </Nav.Link>
+                            <Nav.Link as={CustomLink} to="/signup"  > SignUp </Nav.Link>
 
                             {
                                 user ? (<>
-                                    <Nav.Link onClick={() => signOut(auth)} as={Link} to="/login" className=' text-success' >LogOut</Nav.Link>
+                                    <Nav.Link onClick={() => signOut(auth)} as={CustomLink} to="/login" >LogOut</Nav.Link>
                                     <NavDropdown title="Admin" id="collasible-nav-dropdown" className=' myBrandBgColor text-success rounded-3 '  >
                                         {
                                             user ?
@@ -37,12 +38,12 @@ const Header = () => {
                                                 : ''
                                         }
                                         {/* <NavDropdown.Item as={Link} to="/blogs" className={({ isActive }) => (isActive ? "myBrandColor" : "myBrandColor")}> Blog </NavDropdown.Item> */}
-                                        <NavDropdown.Item as={Link} to="/ManageInventories"  > Manage Items </NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to="/addNewItem"  > Add Item </NavDropdown.Item>
+                                        <NavDropdown.Item as={CustomLink} to="/ManageInventories"  > Manage Items </NavDropdown.Item>
+                                        <NavDropdown.Item as={CustomLink} to="/addNewItem"  > Add Item </NavDropdown.Item>
                                     </NavDropdown>
                                 </>
                                 ) : (
-                                    <Nav.Link as={Link} to="/login" className=' text-success' >Login</Nav.Link>
+                                    <Nav.Link as={CustomLink} to="/login" className=' text-success' >Login</Nav.Link>
                                 )
                             }
 

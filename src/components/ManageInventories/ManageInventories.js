@@ -55,8 +55,8 @@ const ManageInventories = () => {
                             </div>
                             <div className=' d-flex justify-content-between gap-3'>
                                 <input className='w-50' placeholder='Product Category' {...register("category")} />
-                                <select className='w-50' {...register("quality")}>
-                                    <option value="--" selected disabled hidden> Product Quality </option>
+                                <select defaultValue={'x'}  className='w-50' {...register("quality")}>
+                                    <option value="x" disabled hidden> Product Quality </option>
                                     <option value="Normal"> Normal </option>
                                     <option value="Good"> Good </option>
                                     <option value="Best"> Best </option>

@@ -73,7 +73,9 @@ const Login = () => {
                     <div className=''>
                         {errorText}
 
-                        <p className='m-0 mt-4'> Forget Password? <button onClick={resetPassword} className='  p-2 border rounded  text-success text-decoration-none'> Reset Password </button>  </p>
+                        <p className='m-0 mt-4'> Forget Password?
+                            <button onClick={resetPassword} className='  p-2 border rounded  text-success text-decoration-none'> Reset Password </button>
+                        </p>
 
                         <p className='mt-3'> Are You new, Have't an account? <Link className=' bg-light  p-2 border rounded text-success text-decoration-none' to="/signup"> Sign Up First  </Link> </p>
                     </div>

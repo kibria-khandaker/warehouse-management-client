@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
+import { MdDeleteForever } from "react-icons/md";
 import useStockproduct from '../../hooks/useStockproduct';
 
 const InventoriesItem = () => {
@@ -26,36 +27,40 @@ const InventoriesItem = () => {
 
     return (
         <div>
-        <p>Total Stocked items : <b>{fruits.length}</b> </p>
-        <Table striped bordered hover>
-            <thead>
-                <tr>
-                    <th> Image </th>
-                    <th> ID </th>
-                    <th> Stocked Items Name </th>
-                    <th> Supplier </th>
-                    <th> Product Quality </th>
-                    <th> in stock </th>
-                    <th> Delete </th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    fruits.map(fruit => (
-                        <tr key={fruit._id}>
-                            <td><img height={30} src={fruit.img} alt="" /></td>
-                            <td>{fruit._id}</td>
-                            <td>{fruit.name}</td>
-                            <td>{fruit.supplier}</td>
-                            <td> {fruit.quality} </td>
-                            <td> {fruit.inStock} <sup>kg</sup> </td>
-                            <td> <Button onClick={() => handelForDeleteItems(fruit._id)} size="sm" className=' text-white bg-success border-0 btn-outline-success ' >Delete</Button> </td>
-                        </tr>
-                    )).reverse()
-                }
-            </tbody>
-        </Table>
-    </div>
+            <p>Total Stocked items : <b>{fruits.length}</b> </p>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th> Image </th>
+                        <th> ID </th>
+                        <th> Stocked Items Name </th>
+                        <th> Supplier </th>
+                        <th> Product Quality </th>
+                        <th> in stock </th>
+                        <th> Delete </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        fruits.map(fruit => (
+                            <tr key={fruit._id}>
+                                <td><img height={30} src={fruit.img} alt="" /></td>
+                                <td>{fruit._id}</td>
+                                <td>{fruit.name}</td>
+                                <td>{fruit.supplier}</td>
+                                <td> {fruit.quality} </td>
+                                <td> {fruit.inStock} <sup>kg</sup> </td>
+                                <td>
+                                    <button onClick={() => handelForDeleteItems(fruit._id)} className='text-white bg-success border-0 rounded-3 btn-outline-success ' >
+                                        <MdDeleteForever />
+                                    </button>
+                                </td>
+                            </tr>
+                        )).reverse()
+                    }
+                </tbody>
+            </Table>
+        </div>
     );
 };
 
