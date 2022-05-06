@@ -1,8 +1,11 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase.init';
 
 const AddNewItem = () => {
+    const [user] = useAuthState(auth)
     // react-hook-form ----------
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -27,11 +30,13 @@ const AddNewItem = () => {
                     <form onSubmit={handleSubmit(onSubmit)} className='d-flex flex-column gap-2'>
                         <div className=' d-flex justify-content-between gap-3'>
                             <input className='w-50' placeholder='Product Name' {...register("name")} />
-                            <input className='w-50' placeholder='Product Email' type="email"  {...register("email")} />
+                            {
+                                user?.email && <input defaultValue={user?.email} className='w-50' readOnly placeholder='Product Email' type="email"  {...register("email")} />
+                            }
                         </div>
                         <div className=' d-flex justify-content-between gap-3'>
                             <input className='w-50' placeholder='Product Category' {...register("category")} />
-                            <select  defaultValue={'x'}  className='w-50' {...register("quality")}>
+                            <select defaultValue={'x'} className='w-50' {...register("quality")}>
                                 <option value="x" disabled hidden> Product Quality </option>
                                 <option value="Normal"> Normal </option>
                                 <option value="Good"> Good </option>
@@ -40,19 +45,26 @@ const AddNewItem = () => {
                             </select>
                         </div>
                         <div className=' d-flex justify-content-between gap-3'>
-                            <input className='w-75' placeholder='Supplier Name' {...register("supplier")} />
-
-                            <input className='w-25' placeholder='Product Price' type="number" {...register("price")} />
+                            {
+                                user?.displayName && <input  defaultValue={user?.displayName} readOnly className='w-75' placeholder='Supplier Name' {...register("supplier")} />
+                            }                          
+                            <input className='w-25' placeholder='Product Price' type="number" min="1" step="1" {...register("price")} />
                         </div>
                         <div className=' d-flex justify-content-between gap-3'>
-                            <input className='w-75' placeholder='Product image Url' {...register("img")} />
-                            <input className='w-25' placeholder='inStock Unit /kg' type="number" {...register("inStock")} />
+                            <input className='w-75' placeholder='Product image Url'{...register("img")} />
+                            <input className='w-25' placeholder='inStock Unit /kg' type="number" min="1" step="1" {...register("inStock")} />
 
                         </div>
                         <textarea placeholder='Product Description' {...register("shortDesc")} />
                         <input className='bg-success col col-mg-5 col-lg-4 border-0 text-white rounded-3 py-2 mt-2 ' type="submit" value='Add' />
                     </form>
-                    <Link className=' d-inline-block myBrandBgColor my-5 px-3 py-2 rounded-3 text-white text-decoration-none' to={'/ManageInventories'}> Manage Inventories </Link>
+
+
+                    <div className=' d-flex justify-content-between'>
+                        <Link className=' d-inline-block myBrandBgColor my-5 px-3 py-2 rounded-3 text-white text-decoration-none' to={'/myitems'}> See My All Items </Link>
+                        <Link className=' d-inline-block myBrandBgColor my-5 px-3 py-2 rounded-3 text-white text-decoration-none' to={'/ManageInventories'}> Manage Inventories </Link>
+                    </div>
+
                 </div>
             </div>
         </div>

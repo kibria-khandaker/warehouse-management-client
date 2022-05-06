@@ -14,6 +14,7 @@ import Home from './components/Home/Home';
 import AddNewItem from './components/ManageInventories/AddNewItem';
 import ManageInventories from './components/ManageInventories/ManageInventories';
 import UpdateStockItem from './components/ManegeStock/UpdateStockItem';
+import MyItems from './components/MyItems/MyItems';
 import NotFound from './components/NotFound/NotFound';
 import Products from './components/Products/Products';
 
@@ -28,8 +29,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/Chart" element={<Chart />} />
-        
         <Route path="/itemDetails/:id" element={<InventoryItemeBlog />} />
+
+        <Route path="/myitems" element={<MyItems/>} />
 
         <Route path="/addNewItem" element={
           <RequireAuth>

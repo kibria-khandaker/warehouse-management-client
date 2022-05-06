@@ -40,6 +40,7 @@ const Header = () => {
                                         {/* <NavDropdown.Item as={Link} to="/blogs" className={({ isActive }) => (isActive ? "myBrandColor" : "myBrandColor")}> Blog </NavDropdown.Item> */}
                                         <NavDropdown.Item as={CustomLink} to="/ManageInventories"  > Manage Items </NavDropdown.Item>
                                         <NavDropdown.Item as={CustomLink} to="/addNewItem"  > Add Item </NavDropdown.Item>
+                                        <NavDropdown.Item as={CustomLink} to="/myitems"  > My Items </NavDropdown.Item>
                                     </NavDropdown>
                                 </>
                                 ) : (

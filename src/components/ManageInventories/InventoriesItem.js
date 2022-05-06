@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { MdDeleteForever } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 import useStockproduct from '../../hooks/useStockproduct';
 
 const InventoriesItem = () => {
+
     const [fruits, setFruits] = useStockproduct();
     const handelForDeleteItems = id => {
         const confirmDelete = window.confirm('Are you Sure to Delete the item');
@@ -23,7 +25,10 @@ const InventoriesItem = () => {
         }
     }
 
-
+    const navigate = useNavigate()
+    const productDetails = _id => {
+        navigate(`/inventory/${_id}`)
+    }
 
     return (
         <div>
@@ -32,10 +37,10 @@ const InventoriesItem = () => {
                 <thead>
                     <tr>
                         <th> Image </th>
-                        <th> ID </th>
-                        <th> Stocked Items Name </th>
-                        <th> Supplier </th>
+                        <th> Stocked Items Name/ID </th>
+                        <th> Supplier Name/Email </th>
                         <th> Product Quality </th>
+                        <th> Price<sub>/kg</sub> </th>
                         <th> in stock </th>
                         <th> Delete </th>
                     </tr>
@@ -43,16 +48,29 @@ const InventoriesItem = () => {
                 <tbody>
                     {
                         fruits.map(fruit => (
-                            <tr key={fruit._id}>
+                            <tr key={fruit._id} >
                                 <td><img height={30} src={fruit.img} alt="" /></td>
-                                <td>{fruit._id}</td>
-                                <td>{fruit.name}</td>
-                                <td>{fruit.supplier}</td>
-                                <td> {fruit.quality} </td>
-                                <td> {fruit.inStock} <sup>kg</sup> </td>
                                 <td>
+                                    <small><b>Name:</b> {fruit.name}</small> <br />
+                                    <small><b>ID:</b> {fruit._id}</small> 
+                                </td>
+                                <td>
+                                    <small>
+                                    <b>Supplier Name:</b> {fruit.supplier} <br />
+                                        {fruit.email}
+                                    </small>
+                                </td>
+                                <td> {fruit.quality} </td>
+                                <td> {fruit.price}<sub>/kg</sub> </td>
+                                <td> {fruit.inStock} <small>Kg</small> </td>
+                                <td className=' text-end'>
+                                    <p className='mb-1'>
+                                    <button onClick={() => productDetails(fruit._id)} className='text-white bg-success border-0 rounded-3 btn-outline-success' >
+                                        Update Stock
+                                    </button>
+                                    </p>
                                     <button onClick={() => handelForDeleteItems(fruit._id)} className='text-white bg-success border-0 rounded-3 btn-outline-success ' >
-                                        <MdDeleteForever />
+                                        Delete <MdDeleteForever />
                                     </button>
                                 </td>
                             </tr>
