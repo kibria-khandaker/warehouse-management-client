@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { auth } from '../../firebase.init';
 
 const AddNewItem = () => {
@@ -25,6 +26,11 @@ const AddNewItem = () => {
             .then(addResult => {
                 handleSubmit(addResult)
                 reset()
+                // toast.success(`Wow..! Your Item Successfully Added`);
+                
+                // it's comes from backend
+                toast(addResult.success);
+                
                 console.log('Successfully Added:', addResult);                
             })
     };
@@ -35,13 +41,13 @@ const AddNewItem = () => {
                 <div className=' col-md-8 mx-auto py-5'>
                     <form onSubmit={handleSubmit(onSubmit)} className='d-flex flex-column gap-2'>
                         <div className=' d-flex justify-content-between gap-3'>
-                            <input className='w-50' placeholder='Product Name' {...register("name")} />
+                            <input className='w-50' placeholder='Product Name' {...register("name", { required: true })} />
                             {
                                 user?.email && <input defaultValue={user?.email} className='w-50' readOnly placeholder='Product Email' type="email"  {...register("email")} />
                             }
                         </div>
                         <div className=' d-flex justify-content-between gap-3'>
-                            <input className='w-50' placeholder='Product Category' {...register("category")} />
+                            <input className='w-50' placeholder='Product Category' {...register("category", { required: true })} />
                             <select defaultValue={'x'} className='w-50' {...register("quality")}>
                                 <option value="x" disabled hidden> Product Quality </option>
                                 <option value="Normal"> Normal </option>
@@ -54,14 +60,14 @@ const AddNewItem = () => {
                             {
                                 user?.displayName && <input defaultValue={user?.displayName} readOnly className='w-75' placeholder='Supplier Name' {...register("supplier")} />
                             }
-                            <input className='w-25' placeholder='Product Price' type="number" min="1" step="1" {...register("price")} />
+                            <input className='w-25' placeholder='Product Price' type="number" min="1" step="1" {...register("price", { required: true })} />
                         </div>
                         <div className=' d-flex justify-content-between gap-3'>
-                            <input className='w-75' placeholder='Product image Url'{...register("img")} />
-                            <input className='w-25' placeholder='inStock Unit /kg' type="number" min="1" step="1" {...register("inStock")} />
+                            <input className='w-75' placeholder='Product image Url'{...register("img", { required: true })} />
+                            <input className='w-25' placeholder='inStock Unit /kg' type="number" min="1" step="1" {...register("inStock", { required: true })} />
 
                         </div>
-                        <textarea placeholder='Product Description' {...register("shortDesc")} />
+                        <textarea placeholder='Product Description' {...register("shortDesc", { required: true })} />
                         <input className='bg-success col col-mg-5 col-lg-4 border-0 text-white rounded-3 py-2 mt-2 ' type="submit" value='Add' />
                     </form>
 

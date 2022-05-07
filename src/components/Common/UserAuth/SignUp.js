@@ -33,10 +33,13 @@ const SignUp = () => {
     if (error) {
         errorElement = <p className=' text-danger'>Error: {error?.message} </p>
         console.log(error?.message);
+        const errorMessage = error.message;
+        if (errorMessage.includes('email-already-in-use')) {
+            return (alert('Your email already used, You Can Login Your email ') + navigate('/login'))
+        }
+
     }
-    // else if( error?.message=='Firebase: Error (auth/email-already-in-use).' ){
-    //     navigate('/login')
-    // }
+
 
     const handleRegister = async (event) => {
 
@@ -49,21 +52,9 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
 
-
         if (user) {
             navigate('/home');
         }
-        if (!user) {
-            return (alert('your email already used') + navigate('/login'))
-        }
-
-        // if (user) {
-        //     if (error) {
-        //         return (alert('your email already used') + navigate('/login'))
-        //     } else {
-        //         navigate('/home');
-        //     }
-        // }
 
     }
 
@@ -90,7 +81,7 @@ const SignUp = () => {
                                 <Form onSubmit={handleRegister}>
 
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Control type="text" name="name" placeholder="Enter Name" />
+                                        <Form.Control type="text" name="name" placeholder="Enter Name" required />
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="formBasicEmail">

@@ -19,16 +19,12 @@ const MyItems = () => {
                 }
             })
                 .then(res => res.json())
-                .then(data => {
-                    setMyItems(data)
-                })
-                
-
+                .then(data => setMyItems(data))
         } catch (error) {
 
         }
-    // }, [user.email])
-    }, [user.email ])
+    }, [user, myItems])
+    // }, [user])
 
     return (
         <div className='container'>

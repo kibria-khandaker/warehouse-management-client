@@ -56,7 +56,7 @@ const Home = () => {
                             </h4>
                         </div>
                         <div className='col-12 col-lg-4 text-center text-lg-end mt-5 mt-lg-0 '>
-                            <a className='px-4 py-3 fs-4 rounded-3 bg-success border-1 text-white text-decoration-none border-white' href = "mailto: abc@example.com">For any inquiry <MdOutgoingMail> </MdOutgoingMail> </a>
+                            <a className='px-4 py-3 fs-4 rounded-3 bg-success border-1 text-white text-decoration-none border-white' href="mailto: abc@example.com">For any inquiry <MdOutgoingMail> </MdOutgoingMail> </a>
                         </div>
                     </div>
                 </div>
@@ -99,9 +99,13 @@ const Home = () => {
             <div className=' container-fluid home_footer_banner text-center'>
                 <img className='w-25' src={footerLogo} alt="" />
                 <div className='chart_div py-4'>
-                <Chart></Chart>
+                    <Chart></Chart>
                 </div>
+                {/* <div className='chart_div py-5'>
+                    <iframe width="500" height="300" src="https://www.youtube.com/embed/adFWFNRqQc0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div> */}
             </div>
+
 
 
         </>

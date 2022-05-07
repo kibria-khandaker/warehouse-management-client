@@ -22,7 +22,25 @@ const SocialLogin = () => {
     }
 
     if (user) {
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
+        console.log(user);
+        // After Login user email & pass send in DB for JWT Token start  ---
+        const forTokenUrl = `http://localhost:5000/login`;
+        fetch(forTokenUrl, {
+            method: 'POST',
+            body: JSON.stringify({
+                email: user?.user?.email
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                // console.log(data)
+                localStorage.setItem('accessToken', data.token);
+                navigate(from, { replace: true })
+            });
     }
 
 

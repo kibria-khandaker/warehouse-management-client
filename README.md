@@ -16,5 +16,4 @@ I have read your description and you are looking for a front-end web developer f
 - for Data fetching `fetch data` used `Custom Hook`
 - for popup notification i used `React-Toastify`
 - i used `react-bootstrap` for CSS responsive frameworks,
-- i used `react-rating` for Showing Star of CUSTOMER REVIEWS,
 - i used `bootstrap`, `html` and `react-hook-form` for from,

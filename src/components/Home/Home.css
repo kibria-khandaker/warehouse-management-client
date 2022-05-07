@@ -27,7 +27,7 @@
   border-bottom-right-radius: 0rem !important;
 }
 
-.home_footer_banner{
+.home_footer_banner {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -40,8 +40,9 @@
   background-blend-mode: color;
 }
 
+
 @media only screen and (max-width: 500px) {
-  .chart_div{
-display: none;
+  .chart_div {
+    display: none;
   }
 }

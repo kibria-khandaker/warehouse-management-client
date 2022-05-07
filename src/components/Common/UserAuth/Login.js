@@ -32,7 +32,7 @@ const [email, setEmail]=useState()
 
 
     if (user) {
-        console.log(user);
+        // console.log(user);
         // After Login user email & pass send in DB for JWT Token start  ---
         const forTokenUrl = `http://localhost:5000/login`;
         fetch(forTokenUrl, {
@@ -52,7 +52,7 @@ const [email, setEmail]=useState()
             });
 
         // After Login user email & pass send in DB for JWT Token end  ---
-
+            
     }
 
 

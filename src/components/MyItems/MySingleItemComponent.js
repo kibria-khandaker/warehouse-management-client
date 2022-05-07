@@ -22,10 +22,15 @@ const MySingleItemComponent = ({ myItem }) => {
                     console.log(data)
 
                     const remainingItems = fruits.filter(fruit => fruit._id !== id)
+                    // setFruits([...fruits,remainingItems])
                     setFruits(remainingItems)
+                    window.location.reload()
+                    
                 })
         }
     }
+
+
 
 
     
