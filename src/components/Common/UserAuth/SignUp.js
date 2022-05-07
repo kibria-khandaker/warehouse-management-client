@@ -45,12 +45,11 @@ const SignUp = () => {
         await updateProfile({ displayName: name });
 
         if (user) {
-            console.log(user);
-            return (alert('your email already used') + navigate('/login'))
-        } else {
-
-            navigate('/home');
-            console.log(user);
+            if (!user) {
+                return (alert('your email already used') + navigate('/login'))
+            } else {
+                navigate('/home');
+            }
         }
 
     }
@@ -65,11 +64,11 @@ const SignUp = () => {
 
                     {
                         userAuth ? <div className='py-5'>
-                            <h5 className=' px-1 fw-light '> You Already Signed With  : <b> {userAuth?.email}</b> </h5>
+                            <h5 className=' px-1 fw-light '> You are Login With  : <b> {userAuth?.email}</b> </h5>
                             <p className='text-success'>
-                                if you want to sign up with new Account, Place : 
-                                 <Button className=' bg-light border-0 fw-bold text-start rounded-0 text-success' onClick={() => signOut(auth)}>
-                                     Logout
+                                if you want to sign up with new Account, Place :
+                                <Button className=' bg-light border-0 fw-bold text-start rounded-0 text-success' onClick={() => signOut(auth)}>
+                                    Logout
                                 </Button>
                             </p>
                         </div>
@@ -89,15 +88,15 @@ const SignUp = () => {
                                         <Form.Control type="password" name="password" placeholder="Password" required />
                                     </Form.Group>
 
-                                    <Button  className=' border w-100 bg-success text-white rounded-3 p-2 mb-4 ' type="submit">
+                                    <Button className=' border w-100 bg-success text-white rounded-3 p-2 mb-4 ' type="submit">
                                         Sign Up
                                     </Button>
 
                                 </Form>
 
                                 <p>Already have an account? <Link className=' bg-light  p-2 border rounded text-success text-decoration-none' to="/login"> Go to Login </Link> </p>
-                                
-                                
+
+
                                 <SocialLogin></SocialLogin>
 
 

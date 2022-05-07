@@ -8,21 +8,26 @@ const AddNewItem = () => {
     const [user] = useAuthState(auth)
     // react-hook-form ----------
     const { register, handleSubmit } = useForm();
+
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)
         const url = `http://localhost:5000/product/`
         fetch(url, {
             method: 'POST',
             headers: {
+                'authorization':`${user.email} ${localStorage.getItem('accessToken')}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         })
             .then(response => response.json())
             .then(addResult => {
+                handleSubmit(addResult)
                 console.log('Successfully Added:', addResult);
+                
             })
     };
+
     return (
         <div className=' container'>
             <div className='row py-5 mb-5'>
@@ -46,8 +51,8 @@ const AddNewItem = () => {
                         </div>
                         <div className=' d-flex justify-content-between gap-3'>
                             {
-                                user?.displayName && <input  defaultValue={user?.displayName} readOnly className='w-75' placeholder='Supplier Name' {...register("supplier")} />
-                            }                          
+                                user?.displayName && <input defaultValue={user?.displayName} readOnly className='w-75' placeholder='Supplier Name' {...register("supplier")} />
+                            }
                             <input className='w-25' placeholder='Product Price' type="number" min="1" step="1" {...register("price")} />
                         </div>
                         <div className=' d-flex justify-content-between gap-3'>

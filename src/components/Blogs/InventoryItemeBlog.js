@@ -36,7 +36,7 @@ const InventoryItemeBlog = () => {
                             </small>
                             <p className='mt-3'> {singleFruit?.shortDesc} </p>
 
-                            <Button size='sm' onClick={() => productDetails(singleFruit?._id)} className='btn myBrandBgColor border-0 btn-outline-success text-white'> Updated This </Button> <br />
+                            <Button size='sm' onClick={() => productDetails(singleFruit?._id)} className='btn myBrandBgColor border-0 btn-outline-success text-white'> Updated Stock </Button> <br />
 
                             <Link className='my-2 d-inline-block myBrandBgColor py-1 px-2 rounded-3 text-white text-decoration-none' to={'/ManageInventories'}> Manage Inventories </Link>
 

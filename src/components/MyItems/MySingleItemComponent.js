@@ -28,10 +28,7 @@ const MySingleItemComponent = ({ myItem }) => {
     }
 
 
-
-
-
-
+    
     return (
         <div className=' col-md-4 col-lg-3'>
             <div className=' border my-2 rounded p-3'>
@@ -45,6 +42,7 @@ const MySingleItemComponent = ({ myItem }) => {
 
                 <div className=' text-capitalize'>
                     <p className='m-0'> ID : <small>{_id}</small> </p>
+                    <p className='m-0'> Item Name : <small>{name}</small> </p>
                     <p className='m-0'> Price : <b>${price}</b><sub>/kg</sub> </p>
                     <p className='m-0'> inStock : <b>{inStock}</b> kg </p>
                     <p className='m-0'> quality : <b>{quality}</b> </p>

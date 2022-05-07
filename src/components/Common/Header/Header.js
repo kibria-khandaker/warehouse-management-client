@@ -32,7 +32,7 @@ const Header = () => {
                                         {
                                             user ?
                                                 <>
-                                                    <small className='fw-lighter px-1'>{user?.email}</small>
+                                                    <p className='fw-lighter px-3'> User : <b>{user?.displayName}</b></p>
                                                     <NavDropdown.Divider />
                                                 </>
                                                 : ''

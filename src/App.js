@@ -28,27 +28,34 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/Chart" element={<Chart />} />
+        <Route path="/Products" element={<Products />} />
         <Route path="/itemDetails/:id" element={<InventoryItemeBlog />} />
+        <Route path="/Chart" element={<Chart />} />
 
-        <Route path="/myitems" element={<MyItems/>} />
+        <Route path="/myitems" element={
+          <RequireAuth>
+            <MyItems />
+          </RequireAuth>
+        } />
 
         <Route path="/addNewItem" element={
           <RequireAuth>
             <AddNewItem />
           </RequireAuth>
         } />
+
         <Route path="/UpdateStockItem" element={
           <RequireAuth>
             <UpdateStockItem />
           </RequireAuth>
         } />
-        <Route path="/Products" element={<Products />} />
+
         <Route path="/inventory/:id" element={
           <RequireAuth>
             <UpdateStockItem />
           </RequireAuth>
         } />
+
         <Route path="/ManageInventories" element={
           <RequireAuth>
             <ManageInventories />

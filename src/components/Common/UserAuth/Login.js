@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -7,10 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 import LoginImg from '../../../images/loginImg.jpg';
 import { auth } from './../../../firebase.init';
 import LoadingSpinner from './LoadingSpinner';
-import './UserAuth.css';
 import SocialLogin from './SocialLogin';
+import './UserAuth.css';
 
 const Login = () => {
+const [email, setEmail]=useState()
+
 
     const navigate = useNavigate();
     let location = useLocation();
@@ -28,24 +30,47 @@ const Login = () => {
         errorText = <p className=' text-danger'>Error: {error?.message} </p>
     }
 
+
     if (user) {
-        navigate(from, { replace: true });
+        console.log(user);
+        // After Login user email & pass send in DB for JWT Token start  ---
+        const forTokenUrl = `http://localhost:5000/login`;
+        fetch(forTokenUrl, {
+            method: 'POST',
+            body: JSON.stringify({
+                email: user?.user?.email
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                // console.log(data)
+                localStorage.setItem('accessToken', data.token);
+                navigate(from, { replace: true })
+            });
+
+        // After Login user email & pass send in DB for JWT Token end  ---
+
     }
+
 
     const handleToSubmit = (event) => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
         signInWithEmailAndPassword(email, password)
+        // console.log(email);
     }
 
-    const resetPassword = async (event) => {
-        const email = event.target.email.value
+
+    const resetPassword = async (e) => {
         if (email) {
-            await sendPasswordResetEmail(email);
+        await sendPasswordResetEmail(email);
             toast.success(`Check your Email ⮞ ${email}`);
         } else {
-            toast.warn('Enter Email  ☹ ');
+            toast.warn(' Enter Email ☹ in Email field');
         }
     }
 
@@ -59,7 +84,7 @@ const Login = () => {
                     <Form onSubmit={handleToSubmit}>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Control type="email" name="email" placeholder="Enter email" />
+                            <Form.Control type="email" onChange={(e)=>setEmail(e.target.value)} name="email" placeholder="Enter email" />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -71,8 +96,8 @@ const Login = () => {
                         </Button>
                     </Form>
                     <div className=''>
-                        {errorText}
 
+                        {errorText}
                         <p className='m-0 mt-4'> Forget Password?
                             <button onClick={resetPassword} className='  p-2 border rounded  text-success text-decoration-none'> Reset Password </button>
                         </p>
