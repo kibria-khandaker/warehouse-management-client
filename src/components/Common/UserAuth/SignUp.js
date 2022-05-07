@@ -29,9 +29,14 @@ const SignUp = () => {
         return <LoadingSpinner></LoadingSpinner>
     }
 
+
     if (error) {
         errorElement = <p className=' text-danger'>Error: {error?.message} </p>
+        console.log(error?.message);
     }
+    // else if( error?.message=='Firebase: Error (auth/email-already-in-use).' ){
+    //     navigate('/login')
+    // }
 
     const handleRegister = async (event) => {
 
@@ -44,13 +49,21 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
 
+
         if (user) {
-            if (!user) {
-                return (alert('your email already used') + navigate('/login'))
-            } else {
-                navigate('/home');
-            }
+            navigate('/home');
         }
+        if (!user) {
+            return (alert('your email already used') + navigate('/login'))
+        }
+
+        // if (user) {
+        //     if (error) {
+        //         return (alert('your email already used') + navigate('/login'))
+        //     } else {
+        //         navigate('/home');
+        //     }
+        // }
 
     }
 

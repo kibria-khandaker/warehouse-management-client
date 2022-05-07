@@ -1,37 +1,41 @@
 import React from 'react';
-import { Button, Modal, Table } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { auth } from '../../firebase.init';
-import useStockproduct from '../../hooks/useStockproduct';
 import InventoriesItem from './InventoriesItem';
+import Products from './../Products/Products';
+import useStockproduct from '../../hooks/useStockproduct';
 
 const ManageInventories = () => {
-    const [fruits, setFruits] = useStockproduct();
     const [user] = useAuthState(auth)
-
-
+    const [fruits, setFruits] = useStockproduct();
     // react-hook-form ----------
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset  } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)
         const url = `http://localhost:5000/product/`
         // const url = `https://nameless-bastion-84935.herokuapp.com/product/`
         fetch(url, {
             method: 'POST', // or 'PUT'
             headers: {
+                'authorization': `${user.email} ${localStorage.getItem('accessToken')}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         })
             .then(response => response.json())
             .then(addResult => {
-
+                handleSubmit(addResult)
+                reset()
+                setFruits([...fruits,addResult.product])
                 console.log('Successfully Added:', addResult);
-                // const remainRefresh = fruits.filter(fruit => fruit._id !== data)
-                // setFruits(...fruits, remainRefresh)
-                // setFruits(remainRefresh)                
             })
+             
+
+        // const remainRefresh = fruits.filter(fruit => fruit._id !== data)
+        // setFruits(...fruits, remainRefresh)
+        // setFruits(remainRefresh)                
     };
 
     // BS modal function start ----------
@@ -55,11 +59,11 @@ const ManageInventories = () => {
                         <form onSubmit={handleSubmit(onSubmit)} className='d-flex flex-column gap-2'>
                             <div className=' d-flex justify-content-between gap-3'>
                                 <input className='w-50' placeholder='Product Name' {...register("name")} />
-                                {user?.email && <input  defaultValue={user?.email}  className='w-50' readOnly placeholder='Product Email' type="email"  {...register("email")} /> }
+                                {user?.email && <input defaultValue={user?.email} className='w-50' readOnly placeholder='Product Email' type="email"  {...register("email")} />}
                             </div>
                             <div className=' d-flex justify-content-between gap-3'>
                                 <input className='w-50' placeholder='Product Category' {...register("category")} />
-                                <select defaultValue={'x'}  className='w-50' {...register("quality")}>
+                                <select defaultValue={'x'} className='w-50' {...register("quality")}>
                                     <option value="x" disabled hidden> Product Quality </option>
                                     <option value="Normal"> Normal </option>
                                     <option value="Good"> Good </option>
@@ -69,16 +73,16 @@ const ManageInventories = () => {
                             </div>
                             <div className=' d-flex justify-content-between gap-3'>
 
-                            {
-                                user?.displayName && <input  defaultValue={user?.displayName} readOnly className='w-75' placeholder='Supplier Name' {...register("supplier")} />
-                            } 
-                                <input className='w-25'  placeholder='Product Price' type="number"  min="1" step="1" {...register("price")} />
+                                {
+                                    user?.displayName && <input defaultValue={user?.displayName} readOnly className='w-75' placeholder='Supplier Name' {...register("supplier")} />
+                                }
+                                <input className='w-25' placeholder='Product Price' type="number" min="1" step="1" {...register("price")} />
 
                             </div>
                             <div className=' d-flex justify-content-between gap-3'>
 
                                 <input className='w-75' placeholder='Product image Url' {...register("img")} />
-                                <input className='w-25' placeholder='inStock Unit /kg' type="number"  min="1" step="1" {...register("inStock")} />
+                                <input className='w-25' placeholder='inStock Unit /kg' type="number" min="1" step="1" {...register("inStock")} />
 
                             </div>
                             <textarea placeholder='Product Description' {...register("shortDesc")} />
@@ -128,9 +132,13 @@ const ManageInventories = () => {
                     onHide={() => setModalShow(false)}
                 />
             </div>
-            <InventoriesItem></InventoriesItem>
+            <InventoriesItem
+            fruits={fruits}
+            setFruits={setFruits}
+            ></InventoriesItem>
             <>
                 {/* <div>
+                [fruits, setFruits] 
                     <p>Total Stocked items : <b>{fruits.length}</b> </p>
                     <Table striped bordered hover>
                         <thead>

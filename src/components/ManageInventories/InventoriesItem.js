@@ -4,9 +4,10 @@ import { MdDeleteForever } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import useStockproduct from '../../hooks/useStockproduct';
 
-const InventoriesItem = () => {
+const InventoriesItem = ({fruits, setFruits}) => {
 
-    const [fruits, setFruits] = useStockproduct();
+    // const [fruits, setFruits] = useStockproduct();
+
     const handelForDeleteItems = id => {
         const confirmDelete = window.confirm('Are you Sure to Delete the item');
         if (confirmDelete) {

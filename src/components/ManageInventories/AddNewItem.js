@@ -6,12 +6,13 @@ import { auth } from '../../firebase.init';
 
 const AddNewItem = () => {
     const [user] = useAuthState(auth)
-    // react-hook-form ----------
-    const { register, handleSubmit } = useForm();
 
+    // react-hook-form ----------
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         // console.log(data)
         const url = `http://localhost:5000/product/`
+        // const url = `https://nameless-bastion-84935.herokuapp.com/product/`
         fetch(url, {
             method: 'POST',
             headers: {
@@ -23,8 +24,8 @@ const AddNewItem = () => {
             .then(response => response.json())
             .then(addResult => {
                 handleSubmit(addResult)
-                console.log('Successfully Added:', addResult);
-                
+                reset()
+                console.log('Successfully Added:', addResult);                
             })
     };
 
