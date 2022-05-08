@@ -30,10 +30,9 @@ const [email, setEmail]=useState()
         errorText = <p className=' text-danger'>Error: {error?.message} </p>
     }
 
-
     if (user) {
         // console.log(user);
-        // After Login user email & pass send in DB for JWT Token start  ---
+        // JWT Token ---
         const forTokenUrl = `http://localhost:5000/login`;
         fetch(forTokenUrl, {
             method: 'POST',
@@ -50,9 +49,7 @@ const [email, setEmail]=useState()
                 localStorage.setItem('accessToken', data.token);
                 navigate(from, { replace: true })
             });
-
-        // After Login user email & pass send in DB for JWT Token end  ---
-            
+  
     }
 
 
@@ -63,7 +60,6 @@ const [email, setEmail]=useState()
         signInWithEmailAndPassword(email, password)
         // console.log(email);
     }
-
 
     const resetPassword = async (e) => {
         if (email) {

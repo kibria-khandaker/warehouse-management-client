@@ -2,12 +2,12 @@
   background-color: #1987540f;
   border: 1px solid white;
 }
-.overlay_body:hover{
-    border: 1px solid #1987543d;
+.overlay_body:hover {
+  border: 1px solid #1987543d;
 }
 .cart_stock_header {
   border: 0px solid white;
-  letter-spacing: 4px; 
+  letter-spacing: 4px;
   transition: all 0.3s;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
@@ -16,8 +16,6 @@
   letter-spacing: 10px;
   background-color: #20e5891b;
 }
-.update_btn:hover{
-background-color: #3ba775;
+.update_btn:hover {
+  background-color: #3ba775;
 }
-
-/* FD4475 198754 */

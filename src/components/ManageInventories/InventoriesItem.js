@@ -1,12 +1,9 @@
 import React from 'react';
-import { Button, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { MdDeleteForever } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
-import useStockproduct from '../../hooks/useStockproduct';
 
 const InventoriesItem = ({fruits, setFruits}) => {
-
-    // const [fruits, setFruits] = useStockproduct();
 
     const handelForDeleteItems = id => {
         const confirmDelete = window.confirm('Are you Sure to Delete the item');
@@ -47,6 +44,9 @@ const InventoriesItem = ({fruits, setFruits}) => {
                     </tr>
                 </thead>
                 <tbody>
+
+                    {/* xxxxxxxx mapping for data fetch xxxxxxxx */}
+
                     {
                         fruits.map(fruit => (
                             <tr key={fruit._id} >
@@ -77,6 +77,7 @@ const InventoriesItem = ({fruits, setFruits}) => {
                             </tr>
                         )).reverse()
                     }
+                    
                 </tbody>
             </Table>
         </div>

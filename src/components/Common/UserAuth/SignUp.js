@@ -29,7 +29,6 @@ const SignUp = () => {
         return <LoadingSpinner></LoadingSpinner>
     }
 
-
     if (error) {
         errorElement = <p className=' text-danger'>Error: {error?.message} </p>
         console.log(error?.message);
@@ -40,9 +39,7 @@ const SignUp = () => {
 
     }
 
-
     const handleRegister = async (event) => {
-
         event.preventDefault();
 
         const name = event.target.name.value;
@@ -55,7 +52,6 @@ const SignUp = () => {
         if (user) {
             navigate('/home');
         }
-
     }
 
     return (
@@ -100,52 +96,10 @@ const SignUp = () => {
 
                                 <p>Already have an account? <Link className=' bg-light  p-2 border rounded text-success text-decoration-none' to="/login"> Go to Login </Link> </p>
 
-
                                 <SocialLogin></SocialLogin>
-
-
 
                             </>
                     }
-
-
-
-
-
-
-
-
-
-                    {/* <form className="d-flex flex-column justify-content-center" onSubmit={handleSignUp}>
-
-                        <div>
-                            <input className='w-100  border bg-light text-dark rounded-3 p-2 mb-2' type="text" placeholder="Your Name" required />
-                        </div>
-                        <div>
-                            <input className='w-100  border bg-light text-dark rounded-3 p-2 mb-2' type="email" placeholder="Your Email" onChange={handleEmailChange} required />
-                            {errors?.email && <p className="error-message">{errors.email}</p>}
-                        </div>
-
-                        <div className="relative">
-                            <input className='w-100  border bg-light text-dark rounded-3 p-2 mb-2' type="password" placeholder="password" onChange={handlePasswordChange} required />
-
-                            {errors?.password && <p className="error-message">{errors.password}</p>}
-                        </div>
-                        <input
-                            className='w-100   border bg-light text-dark rounded-3 p-2 mb-2'
-                            type="password"
-                            placeholder="confirm password"
-                            onChange={handleConfirmPasswordChange}
-                            required
-                        />
-
-                        <button className='border bg-success text-white rounded-3 p-2 mb-2'>Sign up</button>
-
-                        
-                    </form> */}
-
-
-
 
                 </div>
             </div>

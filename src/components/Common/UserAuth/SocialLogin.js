@@ -3,8 +3,10 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebase.init';
 import LoadingSpinner from './LoadingSpinner';
-import './UserAuth.css'
+import './UserAuth.css';
+
 const SocialLogin = () => {
+
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
     const navigate = useNavigate();
@@ -42,7 +44,6 @@ const SocialLogin = () => {
                 navigate(from, { replace: true })
             });
     }
-
 
     return (
         <div className=' my-5 mx-auto divider_div p-4 border' >

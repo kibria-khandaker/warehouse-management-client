@@ -4,7 +4,7 @@
   background-position: center;
   background-size: cover;
   background-color: #002e20;
-  /* background-color: #19875499; */
+  
   background-repeat: no-repeat;
   background-blend-mode: luminosity;
 }
@@ -32,7 +32,7 @@
   background-size: cover;
   background-position: center;
   background-color: #ffffff80;
-  background-image: url(../../images/offer_img/bg-5.jpg);
+  background-image: url(../../images/bg-5.jpg);
   background-attachment: fixed;
   color: #ffffff;
   margin-top: 150px;

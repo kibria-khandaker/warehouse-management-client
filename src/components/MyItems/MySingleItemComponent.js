@@ -20,27 +20,22 @@ const MySingleItemComponent = ({ myItem }) => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
-
                     const remainingItems = fruits.filter(fruit => fruit._id !== id)
-                    // setFruits([...fruits,remainingItems])
                     setFruits(remainingItems)
                     window.location.reload()
-                    
+
                 })
         }
     }
 
 
-
-
-    
     return (
         <div className=' col-md-4 col-lg-3'>
             <div className=' border my-2 rounded p-3'>
 
                 <div className='d-flex justify-content-between align-items-start'>
                     <img width={100} src={img} alt="" />
-                    <p  onClick={() => handelForDeleteItems(_id)} className='item_delete_btn d-inline-block rounded fs-3 py-2 d-flex justify-content-center '>
+                    <p onClick={() => handelForDeleteItems(_id)} className='item_delete_btn d-inline-block rounded fs-3 py-2 d-flex justify-content-center '>
                         <MdDeleteForever />
                     </p>
                 </div>

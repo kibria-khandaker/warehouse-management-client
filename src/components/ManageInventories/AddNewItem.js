@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { auth } from '../../firebase.init';
 
 const AddNewItem = () => {
+    
     const [user] = useAuthState(auth)
 
     // react-hook-form ----------
@@ -26,9 +27,7 @@ const AddNewItem = () => {
             .then(addResult => {
                 handleSubmit(addResult)
                 reset()
-                // toast.success(`Wow..! Your Item Successfully Added`);
                 
-                // it's comes from backend
                 toast(addResult.success);
                 
                 console.log('Successfully Added:', addResult);                

@@ -1,66 +1,72 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useSingleProductDetails from '../../hooks/useSingleProductDetails';
 
 const UpdateStockItem = () => {
-
     const { id } = useParams();
     const [product, setProduct] = useSingleProductDetails(id);
     const { _id, name, category, supplier, price, inStock, quality, img, shortDesc } = product;
-    
-    //------------  Stock Add with inputted value ( new value + old value = total value )
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => {
-        console.log(data)
+
+    //------------  addStock
+    const [addStock, setAddStock] = useState()
+
+    const handelStockIncrease = () => {
+        const addedStock = (parseInt(inStock) + parseInt(addStock));
 
         const url = `http://localhost:5000/inventory/${id}`
-        // const url = `https://nameless-bastion-84935.herokuapp.com/inventory/${id}`
         fetch(url, {
             method: 'PUT',
-            body: JSON.stringify(data),
+            body: JSON.stringify({
+                inStock: addedStock,
+            }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
             .then((response) => response.json())
-            .then((json) => console.log(json));
+            .then((data) => {
+                setAddStock(data)
+                window.location.reload()
+            });
     };
 
-    //------------ Stock Reduce one by One stockReduce
-    const handelStockReduce = () => {
-        
-    };
 
+    //------------ minus Stock
+    const [minusStock, setMinusStock] = useState()
+    
+    const stockDeliveredOneByOne = () => {
+        const myClickingMethod = document.getElementById("inStockNumber");
+        const minus = myClickingMethod.innerText = inStock - 1;
+
+        const url = `http://localhost:5000/inventory/${id}`
+        fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify({
+                inStock: minus,
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((data2) => {
+                setMinusStock(data2)
+                window.location.reload()
+            });
+
+        window.location.reload();
+    }
 
 
     return (
         <div className='container'>
             <div className="row">
-                <div className="col-auto col-md-10 col-lg-7 mx-auto py-5">
+
+                <div className="col-md-12 col-lg-10 mx-auto py-0">
                     <div className="row px-3">
-                        {/* xxxxxxxxxxxx   */}
-                        <div className='my-5 px-0 mx-0'>
-                            <div className='d-flex flex-column flex-md-row justify-content-between'>
-                                <Link
-                                    className='mb-3 bg-success px-2 py-1 rounded-3 text-white text-decoration-none'
-                                    to={'/ManageInventories'}> Manage Inventories
-                                </Link>
-                                <button
-                                    onClick={() => handelStockReduce()}
-                                    className='mb-3 bg-success px-2 py-1 rounded-3 text-white border-0'>
-                                    Delivered xxx
-                                </button>
-                            </div>
-                            <div>
-                                <form onSubmit={handleSubmit(onSubmit)} className='row mx-0'>
-                                    {product?.inStock && <input className=" border col-md-8" defaultValue={product?.inStock} placeholder='inStock' type="number" {...register("inStock")} />}
-                                    <input className=" border-0 bg-success text-white col-md-4" type="submit" value=' Restock the items' />
-                                </form>
-                            </div>
-                        </div>
-                        {/* xxxxxxxxxxxx  */}
-                        <div className='col-12 rounded-3 mb-4'
+
+                        {/* xxxxxx  stock items Big Image  xxxxxx  */}
+                        <div className='col-12 rounded-3 mt-5'
                             style={{
                                 paddingTop: '200px',
                                 backgroundImage: `url(${img})`,
@@ -69,31 +75,67 @@ const UpdateStockItem = () => {
                                 backgroundSize: 'cover',
                             }}>
                         </div>
-                        <div className='col-12'>
 
-                            <div className='my-5'>
-                                <p>Product ID : <span className=' text-success'> {id}</span> </p>
+                        {/* xxxxxx  stock items Big Image  xxxxxx  */}
+                        <div className='col-12 mt-5 mb-4'>
 
-                                <div className='d-md-flex justify-content-between'>
-                                    <p>Product Name : <span className=' text-success'>{name}</span></p>
-                                    <p> Supplier : <span className=' text-success'>{supplier}</span> </p>
-                                </div>
-                                <div className='d-md-flex justify-content-between'>
-                                    <p>Price : <span className=' text-success'>{price}</span> </p>
-                                    {/* inStock Reduce onClick one by one  */}
-                                    <p>Available In Stock :
-                                        <span className=' text-success'>
-                                            {inStock}
-                                        </span>
-                                    </p>
-                                </div>
-                                <div className='d-md-flex justify-content-between'>
-                                    <p> Quality : <span className=' text-success'> {quality} </span> </p>
-                                    <p> Stock Type : <spam className=' text-success'> {category} </spam> </p>
-                                </div>
+                            <p>Product ID : <span className=' text-success'> {id}</span> </p>
+
+                            <div className='d-md-flex justify-content-between'>
+                                <p>Product Name : <span className=' text-success'>{name}</span></p>
+                                <p> Supplier : <span className=' text-success'>{supplier}</span> </p>
                             </div>
-                            <p className='my-5 pt-3'> <b> Description : </b> {shortDesc}</p>
+                            <div className='d-md-flex justify-content-between'>
+                                <p>Price : <span className=' text-success'>{price}</span> </p>
+
+                                {/* ---------- inStock  ------ */}
+                                <p>Available In Stock :
+                                    <span id='inStockNumber' className=' text-success'>
+                                        {inStock}
+                                    </span>
+                                </p>
+                                {/* ---------- inStock  ------ */}
+
+                            </div>
+                            <div className='d-md-flex justify-content-between'>
+                                <p> Quality : <span className=' text-success'> {quality} </span> </p>
+                                <p> Stock Type : <span className=' text-success'> {category} </span> </p>
+                            </div>
+
                         </div>
+
+                        <div className='col-12 d-flex flex-column flex-md-row gap-4 justify-content-between align-items-center border py-3 rounded-3 bg-light'>
+
+                            <div> {/* ------ Delivered or Delete Stock items Button ------ */}
+                                <button className='bg-success px-2 py-1 rounded-3 text-white border-0' onClick={() => stockDeliveredOneByOne()}> Delivered </button>
+                            </div>
+
+                            <div>
+                                <input
+                                    onChange={(e) => setAddStock(e.target.value)}
+                                    required
+                                    type="number"
+                                    placeholder='Input A number'
+                                    min="1" step="1"
+                                    name="number" id=""
+                                    className='px-2 py-1 text-success border border-success' />
+
+                                <button onClick={() => handelStockIncrease()} className='bg-success px-2 py-1 text-white border border-success'  >Re-Stock the items</button>
+                            </div>
+
+                            <div>
+                                <Link
+                                    className='bg-success px-2 py-2 rounded-3 text-white text-decoration-none'
+                                    to={'/ManageInventories'}> Manage Inventories
+                                </Link>
+                            </div>
+
+                        </div>
+
+                        <div className='col-12'>
+                            <p className='mt-4 mb-5 pt-3'> <b> Item Description : </b> {shortDesc} </p>
+                        </div>
+
                     </div>
                 </div>
             </div>

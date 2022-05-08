@@ -13,22 +13,20 @@ const MyItems = () => {
         const email = user?.email;
         const url = `http://localhost:5000/myItems?email=${email}`;
         try {
-            fetch(url,{
-                headers:{
-                    'authorization':`${user.email} ${localStorage.getItem('accessToken')}`,
+            fetch(url, {
+                headers: {
+                    'authorization': `${user.email} ${localStorage.getItem('accessToken')}`,
                 }
             })
                 .then(res => res.json())
                 .then(data => {
                     setMyItems(data)
                 })
-                
 
         } catch (error) {
 
         }
-    // }, [user.email])
-    }, [user.email ])
+    }, [user.email])
 
     return (
         <div className='container'>
@@ -57,5 +55,3 @@ const MyItems = () => {
 };
 
 export default MyItems;
-
-// http://localhost:5000/myItems?email=kibriakhandaker66@gmail.com

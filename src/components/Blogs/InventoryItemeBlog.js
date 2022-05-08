@@ -19,7 +19,6 @@ const InventoryItemeBlog = () => {
         setSingleFruit(singleFruit);
     }, [id, fruits])
     
-    // console.log(singleFruit);
     return (
         <div className=' container'>
             <div className="row">

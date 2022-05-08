@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import useStockproduct from '../../hooks/useStockproduct';
 import horizontallyImg from '../../images/horizontallyImg.png';
 import jwtImg from '../../images/jwtImg.jpg';
 import MongoDBImg from '../../images/MongoDBImg.jpg';
@@ -8,22 +7,21 @@ import nodejsImg from '../../images/nodejsImg.jpg';
 import verticallyImg from '../../images/verticallyImg.png';
 
 const Blogs = () => {
-    // const [fruits, setFruits] = useStockproduct();
     return (
-
         <div className=' container mx-auto px-0 py-5 mt-5'>
 
             <div className='row'>
                 <div className="col-8 mx-auto">
-                    <h4 className='text-success fw-bold' > 1) Question : 
+                    {/* Question 1 ------------------------------------------------ */}
+                    <h4 className='text-success fw-bold' > 1) Question :
                         <span className='fw-normal' >
-                             Difference between <code>javascript</code> and <code>nodejs</code> ?
+                            Difference between <code>javascript</code> and <code>nodejs</code> ?
                         </span>
                     </h4>
                     <h5 className='text-success fw-normal' > # Answer :</h5>
-                    <Table striped bordered hover  >
+                    <Table  bordered hover  >
                         <thead>
-                            <tr className=' text-center'>
+                            <tr className='text-center'>
                                 <th> no </th>
                                 <th> JavaScript </th>
                                 <th> Node JS </th>
@@ -66,7 +64,7 @@ const Blogs = () => {
                     </Table>
                 </div>
             </div>
-            
+
             <div className='row pt-5 mt-5'>
                 <div className="col-8 mx-auto">
                     <h4 className='text-success fw-bold' >  2) Question :
@@ -75,7 +73,7 @@ const Blogs = () => {
                         </span>
                     </h4>
                     <h5 className='text-success fw-normal' > # Answer : </h5>
-                    <Table striped bordered hover >
+                    <Table  bordered hover >
                         <thead>
                             <tr className=' text-center'>
                                 <th> Node JS </th>
@@ -106,7 +104,7 @@ const Blogs = () => {
 
                                 </td>
                             </tr>
-                            <tr className=' text-center'>
+                            <tr className='text-center'>
                                 <td> <img className='w-100' src={nodejsImg} alt="" /> </td>
                                 <td> <img className='w-100' src={MongoDBImg} alt="" /> </td>
                             </tr>
@@ -123,9 +121,9 @@ const Blogs = () => {
                         </span>
                     </h4>
                     <h5 className='text-success fw-normal' > # Answer : <span className='fw-normal' ></span>  </h5>
-                    <Table striped bordered hover >
+                    <Table  bordered hover >
                         <thead>
-                            <tr className=' text-center'>
+                            <tr className='text-center'>
                                 <th>-</th>
                                 <th>  SQL  </th>
                                 <th> NoSQL </th>
@@ -199,8 +197,8 @@ const Blogs = () => {
                         this means the server does not possess to fully depend on a data store (or) database to deliver session data.
                     </p>
                 </div>
-            </div>  
-                 
+            </div>
+
         </div>
 
     );

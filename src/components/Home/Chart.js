@@ -3,8 +3,10 @@ import { Pie, PieChart, Tooltip } from "recharts";
 import useStockproduct from "../../hooks/useStockproduct";
 
 const Chart = () => {
+
     const [fruits, setFruits] = useStockproduct();
     // console.log(fruits);
+    
     return (
         <div className=" container">
         <div className="row">

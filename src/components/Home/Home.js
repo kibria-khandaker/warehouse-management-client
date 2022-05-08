@@ -101,22 +101,10 @@ const Home = () => {
                 <div className='chart_div py-4'>
                     <Chart></Chart>
                 </div>
-                {/* <div className='chart_div py-5'>
-                    <iframe width="500" height="300" src="https://www.youtube.com/embed/adFWFNRqQc0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div> */}
             </div>
-
-
-
+            
         </>
     );
 };
 
 export default Home;
-
-
-
-// border-top-left-radius: 13.25rem!important;
-// border-bottom-left-radius: 7.25rem!important;
-// border-top-right-radius: 19.25rem!important;
-// border-bottom-right-radius: 0rem!important;import Chart from './Chart';

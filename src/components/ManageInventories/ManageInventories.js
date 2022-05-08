@@ -3,9 +3,8 @@ import { Button, Modal } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { auth } from '../../firebase.init';
-import InventoriesItem from './InventoriesItem';
-import Products from './../Products/Products';
 import useStockproduct from '../../hooks/useStockproduct';
+import InventoriesItem from './InventoriesItem';
 
 const ManageInventories = () => {
     const [user] = useAuthState(auth)
@@ -17,7 +16,7 @@ const ManageInventories = () => {
         const url = `http://localhost:5000/product/`
         // const url = `https://nameless-bastion-84935.herokuapp.com/product/`
         fetch(url, {
-            method: 'POST', // or 'PUT'
+            method: 'POST',
             headers: {
                 'authorization': `${user.email} ${localStorage.getItem('accessToken')}`,
                 'Content-Type': 'application/json',
@@ -31,7 +30,6 @@ const ManageInventories = () => {
                 setFruits([...fruits, addResult.product])
                 console.log('Successfully Added:', addResult);
             })
-
     };
 
     // BS modal function start ----------
@@ -45,13 +43,13 @@ const ManageInventories = () => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Modal heading
+                        Add Your Item
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Centered Modal</h4>
+
                     <div>
-                        {/* name , category , supplier , price , inStock , quality , img , shortDesc , */}
+
                         <form onSubmit={handleSubmit(onSubmit)} className='d-flex flex-column gap-2'>
                             <div className=' d-flex justify-content-between gap-3'>
                                 <input className='w-50' placeholder='Product Name' {...register("name", { required: true })} />
@@ -97,77 +95,23 @@ const ManageInventories = () => {
     const [modalShow, setModalShow] = React.useState(false);
     // BS modal function end ----------
 
-
-    // const handelForDeleteItems = id => {
-    //     const confirmDelete = window.confirm('Are you Sure to Delete the item');
-    //     if (confirmDelete) {
-    //         const url = `http://localhost:5000/inventory/${id}`
-    // //        const url = `https://nameless-bastion-84935.herokuapp.com/inventory/${id}`
-    //         fetch(url, {
-    //             method: 'DELETE'
-    //         })
-    //             .then(res => res.json())
-    //             .then(data => {
-    //                 console.log(data)
-
-    //                 const remainingItems = fruits.filter(fruit => fruit._id !== id)
-    //                 setFruits(remainingItems)
-    //             })
-    //     }
-    // }
-
     return (
         <div className=' container py-5 my-23'>
+
             <h2 className=' text-center'> All Stock Items Here </h2>
             <p className=' text-center'> You able to Manage All items from here </p>
+            
+            {/* xxxxxxxx Modal Button xxxxxxxx */}
             <div className='text-end '>
                 <Button size='md' className=' bg-success border-0 btn-outline-success text-white' onClick={() => setModalShow(true)}>
                     Add new item
                 </Button>
-
-                <MyVerticallyCenteredModal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                />
+                <MyVerticallyCenteredModal show={modalShow}  onHide={() => setModalShow(false)}  />
             </div>
-            <InventoriesItem
-                fruits={fruits}
-                setFruits={setFruits}
-            ></InventoriesItem>
-            <>
-                {/* <div>
-                [fruits, setFruits] 
-                    <p>Total Stocked items : <b>{fruits.length}</b> </p>
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th> Image </th>
-                                <th> ID </th>
-                                <th> Stocked Items Name </th>
-                                <th> Supplier </th>
-                                <th> Product Quality </th>
-                                <th> in stock </th>
-                                <th> Delete </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                fruits.map(fruit => (
-                                    <tr key={fruit._id}>
-                                        <td><img height={30} src={fruit.img} alt="" /></td>
-                                        <td>{fruit._id}</td>
-                                        <td>{fruit.name}</td>
-                                        <td>{fruit.supplier}</td>
-                                        <td> {fruit.quality} </td>
-                                        <td> {fruit.inStock} <sup>kg</sup> </td>
-                                        <td> <Button onClick={() => handelForDeleteItems(fruit._id)} size="sm" className=' text-white bg-success border-0 btn-outline-success ' >Delete</Button> </td>
-                                    </tr>
-                                )).reverse()
-                            }
-                        </tbody>
-                    </Table>
-                </div> */}
-            </>
+
+            {/* xxxxxxxxxxx Single data mapping component xxxxxxxxxxx */}
+            <InventoriesItem fruits={fruits} setFruits={setFruits} ></InventoriesItem>
+
         </div>
     );
 };
