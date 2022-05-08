@@ -7,3 +7,34 @@
 .myBrandBorderColor {
   border-color: #198754;
 }
+
+.myGreenBtn {
+  background-color: #198754;
+  color: #ffffff;
+}
+.myGreenBtn:hover {
+  background-color: #2da46c;
+}
+
+.item_delete_btn {
+  /* background-color: green; */
+  background-color: rgb(244, 40, 40);
+  transition: all 0.2s;
+  color: #ffffff;
+  cursor: pointer;
+}
+.item_delete_btn:hover {
+  background-color: rgb(241, 26, 26);
+  color: #000000;
+}
+
+.item_Update_btn {
+  background-color: rgb(232, 174, 0);
+  transition: all 0.2s;
+  color: #ffffff;
+  cursor: pointer;
+}
+.item_Update_btn:hover {
+  background-color: rgb(255, 170, 0);
+  color: #000000;
+}

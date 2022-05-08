@@ -48,7 +48,13 @@ const MyItems = () => {
                 )).reverse()}
 
                 <div className='text-end'>
-                    <Link className=' text-white px-2 py-1 rounded text-decoration-none bg-success ' to='/addNewItem'> Add More My Item </Link>
+                    <Link className='  text-white px-2 py-1 rounded text-decoration-none bg-success ' to='/addNewItem'> Add More My Item </Link>
+                    <br />
+                    <br />
+                    <Link
+                        className='bg-success my-5 px-2 py-2 rounded-3 text-white text-decoration-none'
+                        to={'/ManageInventories'}> Manage Inventories
+                    </Link>
                 </div>
             </div>
         </div>

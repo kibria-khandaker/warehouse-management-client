@@ -30,7 +30,13 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/Products" element={<Products />} />
         <Route path="/itemDetails/:id" element={<InventoryItemeBlog />} />
-        <Route path="/Chart" element={<Chart />} />
+
+
+        <Route path="/Chart" element={
+          <RequireAuth>
+            <Chart />
+          </RequireAuth>
+        } />
 
         <Route path="/myitems" element={
           <RequireAuth>

@@ -31,7 +31,7 @@ const InventoriesItem = ({fruits, setFruits}) => {
     return (
         <div>
             <p>Total Stocked items : <b>{fruits.length}</b> </p>
-            <Table striped bordered hover>
+            <Table  bordered hover>
                 <thead>
                     <tr>
                         <th> Image </th>
@@ -50,7 +50,7 @@ const InventoriesItem = ({fruits, setFruits}) => {
                     {
                         fruits.map(fruit => (
                             <tr key={fruit._id} >
-                                <td><img height={30} src={fruit.img} alt="" /></td>
+                                <td><img height={55} className='rounded-3' src={fruit.img} alt="ItemsImage" /></td>
                                 <td>
                                     <small><b>Name:</b> {fruit.name}</small> <br />
                                     <small><b>ID:</b> {fruit._id}</small> 
@@ -66,11 +66,11 @@ const InventoriesItem = ({fruits, setFruits}) => {
                                 <td> {fruit.inStock} <small>Kg</small> </td>
                                 <td className=' text-end'>
                                     <p className='mb-1'>
-                                    <button onClick={() => productDetails(fruit._id)} className='text-white bg-success border-0 rounded-3 btn-outline-success' >
+                                    <button onClick={() => productDetails(fruit._id)} className='item_Update_btn  border-0 rounded-3 btn-outline-success' >
                                         Update Stock
                                     </button>
                                     </p>
-                                    <button onClick={() => handelForDeleteItems(fruit._id)} className='text-white bg-success border-0 rounded-3 btn-outline-success ' >
+                                    <button onClick={() => handelForDeleteItems(fruit._id)} className='item_delete_btn border-0 rounded-3 btn-outline-success ' >
                                         Delete <MdDeleteForever />
                                     </button>
                                 </td>

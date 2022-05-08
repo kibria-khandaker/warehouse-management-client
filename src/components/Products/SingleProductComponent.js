@@ -33,7 +33,7 @@ const SingleProductComponent = ({ fruit }) => {
                     <hr className='myBrandColor' />
                     <div className=' d-flex justify-content-between'>
                         <h6 className="card-text text-center fw-light"> In stock: <b>{inStock} kg</b> </h6>
-                        <Button size='sm' onClick={() => productDetails(_id)} className='btn myBrandBgColor border-0 btn-outline-success text-white'> Updated {name} Stock </Button>
+                        <Button size='sm' onClick={() => productDetails(_id)} className='btn myGreenBtn border-0 btn-outline-success text-white'> Updated {name} Stock </Button>
                     </div>
                 </div>
 

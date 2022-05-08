@@ -1,7 +1,6 @@
 import React from 'react';
 import { MdDeleteForever } from "react-icons/md";
 import useStockproduct from '../../hooks/useStockproduct';
-import './MyItems.css';
 
 const MySingleItemComponent = ({ myItem }) => {
     const { _id, category, email, img, inStock, name, price, quality, shortDesc, supplier } = myItem;
@@ -27,7 +26,6 @@ const MySingleItemComponent = ({ myItem }) => {
                 })
         }
     }
-
 
     return (
         <div className=' col-md-4 col-lg-3'>

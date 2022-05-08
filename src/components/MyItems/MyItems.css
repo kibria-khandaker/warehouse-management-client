@@ -1,9 +1,0 @@
-.item_delete_btn{
-    background-color: green;
-    transition: all 0.2s;
-    color: #ffffff;
-    cursor: pointer;
-}
-.item_delete_btn:hover{
-    background-color: red;
-}

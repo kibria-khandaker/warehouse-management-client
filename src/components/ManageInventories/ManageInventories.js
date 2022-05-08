@@ -7,8 +7,10 @@ import useStockproduct from '../../hooks/useStockproduct';
 import InventoriesItem from './InventoriesItem';
 
 const ManageInventories = () => {
+
     const [user] = useAuthState(auth)
     const [fruits, setFruits] = useStockproduct();
+
     // react-hook-form ----------
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
@@ -49,7 +51,6 @@ const ManageInventories = () => {
                 <Modal.Body>
 
                     <div>
-
                         <form onSubmit={handleSubmit(onSubmit)} className='d-flex flex-column gap-2'>
                             <div className=' d-flex justify-content-between gap-3'>
                                 <input className='w-50' placeholder='Product Name' {...register("name", { required: true })} />
@@ -85,6 +86,7 @@ const ManageInventories = () => {
                             <input className='bg-success col col-mg-5 col-lg-4 border-0 text-white rounded-3 py-2 mt-2 ' type="submit" value='Add' />
                         </form>
                     </div>
+                    
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className='text-white btn-outline-success bg-success' onClick={props.onHide}>Close</Button>
@@ -100,13 +102,13 @@ const ManageInventories = () => {
 
             <h2 className=' text-center'> All Stock Items Here </h2>
             <p className=' text-center'> You able to Manage All items from here </p>
-            
+
             {/* xxxxxxxx Modal Button xxxxxxxx */}
             <div className='text-end '>
                 <Button size='md' className=' bg-success border-0 btn-outline-success text-white' onClick={() => setModalShow(true)}>
                     Add new item
                 </Button>
-                <MyVerticallyCenteredModal show={modalShow}  onHide={() => setModalShow(false)}  />
+                <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
             </div>
 
             {/* xxxxxxxxxxx Single data mapping component xxxxxxxxxxx */}

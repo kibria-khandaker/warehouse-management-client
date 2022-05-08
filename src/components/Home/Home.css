@@ -4,7 +4,7 @@
   background-position: center;
   background-size: cover;
   background-color: #002e20;
-  
+
   background-repeat: no-repeat;
   background-blend-mode: luminosity;
 }
@@ -40,8 +40,7 @@
   background-blend-mode: color;
 }
 
-
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
   .chart_div {
     display: none;
   }

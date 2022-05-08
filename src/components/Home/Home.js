@@ -1,13 +1,12 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { MdOutgoingMail } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
 import useStockproduct from '../../hooks/useStockproduct';
 import footerLogo from '../../images/logo.png';
 import SingleProductComponent from '../Products/SingleProductComponent';
 import BannerSlide from './BannerSlide';
 import './Home.css';
-import Chart from './Chart'
-import { MdOutgoingMail } from "react-icons/md";
 
 const Home = () => {
     const [fruits, setFruits] = useStockproduct();
@@ -38,7 +37,7 @@ const Home = () => {
                     </div>
                     <div className='row'>
                         <div className='col text-center m-5 pb-5'>
-                            <Link className=' d-inline-block myBrandBgColor px-3 py-2 rounded-3 text-white text-decoration-none' to={'/ManageInventories'}> Manage Inventories </Link>
+                            <Link className=' d-inline-block myGreenBtn px-3 py-2 rounded-3 text-white text-decoration-none' to={'/ManageInventories'}> Manage Inventories </Link>
                         </div>
                     </div>
                 </div>
@@ -56,7 +55,7 @@ const Home = () => {
                             </h4>
                         </div>
                         <div className='col-12 col-lg-4 text-center text-lg-end mt-5 mt-lg-0 '>
-                            <a className='px-4 py-3 fs-4 rounded-3 bg-success border-1 text-white text-decoration-none border-white' href="mailto: abc@example.com">For any inquiry <MdOutgoingMail> </MdOutgoingMail> </a>
+                            <a className='px-4 py-3 fs-4 rounded-3 myGreenBtn border-1 text-white text-decoration-none border-white' href="mailto: abc@example.com">For any inquiry <MdOutgoingMail> </MdOutgoingMail> </a>
                         </div>
                     </div>
                 </div>
@@ -98,11 +97,11 @@ const Home = () => {
             {/* xxxxxxxxxxxx Footer Banner section  xxxxxxxxxxxx  */}
             <div className=' container-fluid home_footer_banner text-center'>
                 <img className='w-25' src={footerLogo} alt="" />
-                <div className='chart_div py-4'>
-                    <Chart></Chart>
+                <div className=' py-4 my-5'>
+                    <Link className='chart_div text-white px-2 py-1 rounded text-decoration-none bg-success ' to='/Chart'> Check our stock graph </Link>
                 </div>
             </div>
-            
+
         </>
     );
 };
