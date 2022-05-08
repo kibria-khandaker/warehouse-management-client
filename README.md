@@ -10,6 +10,14 @@
 
 <br /><br />
 
+You can try With the Email for testing:
+
+User email: kibriakhandaker66@gmail.com
+Pass: 123456
+
+<br /><br />
+<br /><br />
+
 Hello,
 I am Kibria,
 <br />
