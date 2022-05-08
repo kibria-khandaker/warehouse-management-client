@@ -10,18 +10,10 @@
 
 <br /><br />
 
-You can try With the Email for testing:
-
-User email: kibriakhandaker66@gmail.com
-Pass: 123456
-
-<br /><br />
-<br /><br />
-
 Hello,
 I am Kibria,
 <br />
-I have read your description and you are looking for a front-end web developer for your company, your company focuses on warehouse management (inventory management) website . here is an example of a warehouse-type website. you can check from the point of list
+I have read your description and you are looking for a front-end web developer for your company, your company focuses on warehouse management (inventory management) website . here is an example of a warehouse-type website. you can check from the point of list. And If you want to test the Site and the dashboard You can Sign up as user Or You can use the Dummy user/pass  (You can try With the Email for testing: {{ User email: kibriakhandaker66@gmail.com  -- Pass: 123456 }} )
 
 #### Here is my Details about my Project
 
