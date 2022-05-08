@@ -2,6 +2,8 @@
 
 ### My project Live link, And click [https://fruits-stock-house.web.app/](https://fruits-stock-house.web.app/)
 <br/>
+### My project Live link, And click [https://fruits-stock-house.firebaseapp.com/](https://fruits-stock-house.firebaseapp.com/)
+<br/>
 
 <br /><br />
 #### My StackOverflow Question link, And click [My StackOverflow Question link](https://stackoverflow.com/questions/72130030/in-react-login-component-firebase-login-signup-is-working-but-when-i-am-trying-t)
