@@ -13,7 +13,8 @@ const UpdateStockItem = () => {
     const handelStockIncrease = () => {
         const addedStock = (parseInt(inStock) + parseInt(addStock));
 
-        const url = `http://localhost:5000/inventory/${id}`
+        // const url = `http://localhost:5000/inventory/${id}`
+        const url = `https://nameless-bastion-84935.herokuapp.com/inventory/${id}`
         fetch(url, {
             method: 'PUT',
             body: JSON.stringify({
@@ -38,7 +39,8 @@ const UpdateStockItem = () => {
         const myClickingMethod = document.getElementById("inStockNumber");
         const minus = myClickingMethod.innerText = inStock - 1;
 
-        const url = `http://localhost:5000/inventory/${id}`
+        // const url = `http://localhost:5000/inventory/${id}`
+        const url = `https://nameless-bastion-84935.herokuapp.com/inventory/${id}`
         fetch(url, {
             method: 'PUT',
             body: JSON.stringify({

@@ -11,7 +11,7 @@ import SocialLogin from './SocialLogin';
 import './UserAuth.css';
 
 const Login = () => {
-const [email, setEmail]=useState()
+    const [email, setEmail] = useState()
 
 
     const navigate = useNavigate();
@@ -33,7 +33,8 @@ const [email, setEmail]=useState()
     if (user) {
         // console.log(user);
         // JWT Token ---
-        const forTokenUrl = `http://localhost:5000/login`;
+        // const forTokenUrl = `http://localhost:5000/login`;
+        const forTokenUrl = `https://nameless-bastion-84935.herokuapp.com/login`;
         fetch(forTokenUrl, {
             method: 'POST',
             body: JSON.stringify({
@@ -49,7 +50,7 @@ const [email, setEmail]=useState()
                 localStorage.setItem('accessToken', data.token);
                 navigate(from, { replace: true })
             });
-  
+
     }
 
 
@@ -63,7 +64,7 @@ const [email, setEmail]=useState()
 
     const resetPassword = async (e) => {
         if (email) {
-        await sendPasswordResetEmail(email);
+            await sendPasswordResetEmail(email);
             toast.success(`Check your Email ⮞ ${email}`);
         } else {
             toast.warn(' Enter Email ☹ in Email field');
@@ -80,7 +81,7 @@ const [email, setEmail]=useState()
                     <Form onSubmit={handleToSubmit}>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Control type="email" onChange={(e)=>setEmail(e.target.value)} name="email" placeholder="Enter email" />
+                            <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Enter email" />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">

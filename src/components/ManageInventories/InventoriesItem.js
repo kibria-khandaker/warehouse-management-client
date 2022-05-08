@@ -8,8 +8,8 @@ const InventoriesItem = ({fruits, setFruits}) => {
     const handelForDeleteItems = id => {
         const confirmDelete = window.confirm('Are you Sure to Delete the item');
         if (confirmDelete) {
-            const url = `http://localhost:5000/inventory/${id}`
-            // const url = `https://nameless-bastion-84935.herokuapp.com/inventory/${id}`
+            // const url = `http://localhost:5000/inventory/${id}`
+            const url = `https://nameless-bastion-84935.herokuapp.com/inventory/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
