@@ -18,6 +18,7 @@ const RequireAuth = ({ children }) => {
         return <Navigate to='/login' state={{ from: location }} replace ></Navigate>
     }
 
+
     /**
      * You Can Comment Out the code for testing purposes
      * if you want to Comment Line from 26 to 47 or ( Start SS to End EE do Comment )
@@ -42,9 +43,10 @@ const RequireAuth = ({ children }) => {
 
             </div>
         )
-
     }
     // user Email emailVerified end ----------- End EE
+
+
 
     return children;
 };
