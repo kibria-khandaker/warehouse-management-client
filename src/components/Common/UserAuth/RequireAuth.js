@@ -23,28 +23,28 @@ const RequireAuth = ({ children }) => {
      * if you want to Comment Line from 26 to 47 or ( Start SS to End EE do Comment )
      */
 
-    // // user Email emailVerified start ------------ Start SS
-    // if (!user.emailVerified) {
-    //     return (
-    //         <div className=' container py-5 my-5 text-center'>
-    //             <h4 className=' text-danger'> Your Email Not verified </h4>
-    //             <h5 className=' text-warning my-3'>  Please Click to Verify </h5>
+    // user Email emailVerified start ------------ Start SS
+    if (!user.emailVerified) {
+        return (
+            <div className=' container py-5 my-5 text-center'>
+                <h4 className=' text-danger'> Your Email Not verified </h4>
+                <h5 className=' text-warning my-3'>  Please Click to Verify </h5>
 
-    //             <button
-    //                 className=' border-0 bg-success text-white rounded-1 px-4 py-2'
-    //                 onClick={async () => {
-    //                     await sendEmailVerification();
-    //                     toast('Sent email');
-    //                 }}
-    //             >
-    //                 Verify email
-    //             </button>
+                <button
+                    className=' border-0 bg-success text-white rounded-1 px-4 py-2'
+                    onClick={async () => {
+                        await sendEmailVerification();
+                        toast('Sent email');
+                    }}
+                >
+                    Verify email
+                </button>
 
-    //         </div>
-    //     )
+            </div>
+        )
 
-    // }
-    // // user Email emailVerified end ----------- End EE
+    }
+    // user Email emailVerified end ----------- End EE
 
     return children;
 };
