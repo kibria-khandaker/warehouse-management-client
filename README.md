@@ -8,17 +8,12 @@
 
 <br/>
 
-<br /><br />
-#### My StackOverflow Question link, And click [My StackOverflow Question link](https://stackoverflow.com/questions/72130030/in-react-login-component-firebase-login-signup-is-working-but-when-i-am-trying-t)
-
-##### My Stack Overflow Questions ScreenShot. it is for proof. I heard Stack Overflow suddenly Question Delete without notice. So I send it [https://prnt.sc/p_PXw-dxPdsi](https://prnt.sc/p_PXw-dxPdsi)
-
-<br /><br />
+<br />
 
 Hello,
 I am Kibria,
 <br />
-I have read your description and you are looking for a front-end web developer for your company, your company focuses on warehouse management (inventory management) website . here is an example of a warehouse-type website. you can check from the point of list. And If you want to test the Site and the dashboard You can Sign up as user Or You can use the Dummy user/pass  (You can try With the Email for testing: {{ User email: kibriakhandaker66@gmail.com  -- Pass: 123456 }} )
+I have read your description and you are looking for a front-end web developer for your company, your company focuses on warehouse management (inventory management) website . here is an example of a warehouse-type website. you can check from the point of list. 
 
 #### Here is my Details about my Project
 
