@@ -27,8 +27,8 @@ const SocialLogin = () => {
         // navigate(from, { replace: true });
         console.log(user);
         // After Login user email & pass send in DB for JWT Token start  ---
-        // const forTokenUrl = `http://localhost:5000/login`;
-        const forTokenUrl = `http://localhost:5000/login`;
+        // const forTokenUrl = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/login`;
+        const forTokenUrl = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/login`;
         fetch(forTokenUrl, {
             method: 'POST',
             body: JSON.stringify({

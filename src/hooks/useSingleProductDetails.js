@@ -4,8 +4,8 @@ const useSingleProductDetails = (id) => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        // const url = `http://localhost:5000/inventory/${id}`;
-        const url = `http://localhost:5000/inventory/${id}`;
+        // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`;
+        const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`;
 
         fetch(url)
             .then(res => res.json())

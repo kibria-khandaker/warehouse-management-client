@@ -6,9 +6,8 @@ const useStockproduct = () => {
 
     useEffect(() => {
 
-        // const url = `http://localhost:5000/product`;
-        const url = `http://localhost:5000/product`;
-
+        // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/product`;
+        const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/product/`;
         fetch(url)
             .then(res => res.json())
             .then(data => setFruits(data))

@@ -15,8 +15,8 @@ const ManageInventories = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         // console.log(data)
-        // const url = `http://localhost:5000/product/`
-        const url = `http://localhost:5000/product/`
+        // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/product/`
+        const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/product/`
         fetch(url, {
             method: 'POST',
             headers: {

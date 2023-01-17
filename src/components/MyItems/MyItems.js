@@ -11,8 +11,8 @@ const MyItems = () => {
 
     useEffect(() => {
         const email = user?.email;
-        // const url = `http://localhost:5000/myItems?email=${email}`;
-        const url = `http://localhost:5000/myItems?email=${email}`;
+        // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/myItems?email=${email}`;
+        const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/myItems?email=${email}`;
         try {
             fetch(url, {
                 headers: {
