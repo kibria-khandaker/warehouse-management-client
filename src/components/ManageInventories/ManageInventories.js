@@ -16,7 +16,7 @@ const ManageInventories = () => {
     const onSubmit = data => {
         // console.log(data)
         // const url = `http://localhost:5000/product/`
-        const url = `https://nameless-bastion-84935.herokuapp.com/product/`
+        const url = `http://localhost:5000/product/`
         fetch(url, {
             method: 'POST',
             headers: {

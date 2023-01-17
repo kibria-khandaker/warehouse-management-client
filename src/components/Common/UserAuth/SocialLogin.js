@@ -28,7 +28,7 @@ const SocialLogin = () => {
         console.log(user);
         // After Login user email & pass send in DB for JWT Token start  ---
         // const forTokenUrl = `http://localhost:5000/login`;
-        const forTokenUrl = `https://nameless-bastion-84935.herokuapp.com/login`;
+        const forTokenUrl = `http://localhost:5000/login`;
         fetch(forTokenUrl, {
             method: 'POST',
             body: JSON.stringify({

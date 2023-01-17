@@ -12,7 +12,7 @@ const MyItems = () => {
     useEffect(() => {
         const email = user?.email;
         // const url = `http://localhost:5000/myItems?email=${email}`;
-        const url = `https://nameless-bastion-84935.herokuapp.com/myItems?email=${email}`;
+        const url = `http://localhost:5000/myItems?email=${email}`;
         try {
             fetch(url, {
                 headers: {
