@@ -2,14 +2,14 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import { MdDeleteForever } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from './../../utils/config';
 
 const InventoriesItem = ({fruits, setFruits}) => {
 
     const handelForDeleteItems = id => {
         const confirmDelete = window.confirm('Are you Sure to Delete the item');
         if (confirmDelete) {
-            // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`
-            const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`
+            const url = `${BASE_URL}/inventory/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

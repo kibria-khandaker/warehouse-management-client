@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../utils/config';
 import { auth } from './../../firebase.init';
 import MySingleItemComponent from './MySingleItemComponent';
 
@@ -11,8 +12,7 @@ const MyItems = () => {
 
     useEffect(() => {
         const email = user?.email;
-        // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/myItems?email=${email}`;
-        const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/myItems?email=${email}`;
+        const url = `${BASE_URL}/myItems?email=${email}`;
         try {
             fetch(url, {
                 headers: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { MdDeleteForever } from "react-icons/md";
 import useStockproduct from '../../hooks/useStockproduct';
+import { BASE_URL } from '../../utils/config';
 
 const MySingleItemComponent = ({ myItem }) => {
     const { _id, category, email, img, inStock, name, price, quality, shortDesc, supplier } = myItem;
@@ -11,8 +12,7 @@ const MySingleItemComponent = ({ myItem }) => {
     const handelForDeleteItems = id => {
         const confirmDelete = window.confirm('Are you Sure to Delete the item');
         if (confirmDelete) {
-            // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`
-            const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`
+            const url = `${BASE_URL}/inventory/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

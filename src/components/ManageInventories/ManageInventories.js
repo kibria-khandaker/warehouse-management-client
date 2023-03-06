@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { auth } from '../../firebase.init';
 import useStockproduct from '../../hooks/useStockproduct';
+import { BASE_URL } from '../../utils/config';
 import InventoriesItem from './InventoriesItem';
 
 const ManageInventories = () => {
@@ -15,8 +16,7 @@ const ManageInventories = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         // console.log(data)
-        // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/product/`
-        const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/product/`
+        const url = `${BASE_URL}/product/`
         fetch(url, {
             method: 'POST',
             headers: {

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebase.init';
+import { BASE_URL } from '../../../utils/config';
 import LoadingSpinner from './LoadingSpinner';
 import './UserAuth.css';
 
@@ -27,8 +28,7 @@ const SocialLogin = () => {
         // navigate(from, { replace: true });
         console.log(user);
         // After Login user email & pass send in DB for JWT Token start  ---
-        // const forTokenUrl = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/login`;
-        const forTokenUrl = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/login`;
+        const forTokenUrl = `${BASE_URL}/login`;
         fetch(forTokenUrl, {
             method: 'POST',
             body: JSON.stringify({

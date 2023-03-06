@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { auth } from '../../firebase.init';
+import { BASE_URL } from './../../utils/config';
 
 const AddNewItem = () => {
     
@@ -13,8 +14,7 @@ const AddNewItem = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         // console.log(data)
-        // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/product/`
-        const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/product/`
+        const url = `${BASE_URL}/product/`
         fetch(url, {
             method: 'POST',
             headers: {

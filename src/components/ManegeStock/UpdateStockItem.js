@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useSingleProductDetails from '../../hooks/useSingleProductDetails';
+import { BASE_URL } from '../../utils/config';
 
 const UpdateStockItem = () => {
     const { id } = useParams();
@@ -13,8 +14,7 @@ const UpdateStockItem = () => {
     const handelStockIncrease = () => {
         const addedStock = (parseInt(inStock) + parseInt(addStock));
 
-        // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`
-        const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`
+        const url = `${BASE_URL}/inventory/${id}`
         fetch(url, {
             method: 'PUT',
             body: JSON.stringify({
@@ -39,8 +39,7 @@ const UpdateStockItem = () => {
         const myClickingMethod = document.getElementById("inStockNumber");
         const minus = myClickingMethod.innerText = inStock - 1;
 
-        // const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`
-        const url = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/inventory/${id}`
+        const url = `${BASE_URL}/inventory/${id}`
         fetch(url, {
             method: 'PUT',
             body: JSON.stringify({

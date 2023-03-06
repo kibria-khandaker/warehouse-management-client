@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import LoginImg from '../../../images/loginImg.jpg';
+import { BASE_URL } from '../../../utils/config';
 import { auth } from './../../../firebase.init';
 import LoadingSpinner from './LoadingSpinner';
 import SocialLogin from './SocialLogin';
@@ -32,9 +33,8 @@ const Login = () => {
 
     if (user) {
         // console.log(user);
-        // JWT Token ---
-        // const forTokenUrl = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/login`;
-        const forTokenUrl = `https://food-warehouse-ga7or0h57-kibria-khandaker.vercel.app/login`;
+        // JWT Token ---        
+        const forTokenUrl = `${BASE_URL}/login`;
         fetch(forTokenUrl, {
             method: 'POST',
             body: JSON.stringify({
